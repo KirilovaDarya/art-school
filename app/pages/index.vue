@@ -8,12 +8,12 @@ const address = 'проспект Ленина 49, Екатеринбург'
 const hours = '360 дней в году · 10:00–21:00'
 
 const features = [
-  { t: 'Мастерская с характером', d: 'Не класс, а место силы в самом центре города.', c: 's-sun', rot: '-2deg', rd: 'rd1' },
+  { t: 'Мастерская с характером', d: 'Свет, зелень и чай — как дома, только с мольбертами.', c: 's-sun', rot: '-2deg', rd: 'rd1' },
   { t: 'От классики до цифры', d: 'Меняй направление под настроение — без потери прогресса.', c: 's-sky', rot: '1.5deg', rd: 'rd2' },
-  { t: 'Без догм и парадигм', d: 'Подстраиваем обучение под тебя: через метафоры или науку.', c: 's-lavender', rot: '-1deg', rd: 'rd4' },
+  { t: 'Под тебя, а не под шаблон', d: 'Подстраиваем обучение под твой темп и восприятие — персонально.', c: 's-lavender', rot: '-1deg', rd: 'rd4' },
   { t: 'Тарифы под твой ритм', d: 'Плати только за тот объём, который реально осваиваешь.', c: 's-lime', rot: '2deg', rd: 'rd1' },
-  { t: 'Взрослые и дети с 10 лет', d: 'Новички и продвинутые, возможен семейный формат.', c: 's-fuchsia', rot: '-1.5deg', rd: 'rd2' },
-  { t: 'Открыты 360 дней в году', d: 'С 10:00 до 21:00 — приходи, когда удобно именно тебе.', c: 's-card', rot: '1deg', rd: 'rd4' }
+  { t: 'Взрослым и будущим студентам', d: 'Готовим портфолио к поступлению и учим для души; детям — по записи с 10 лет.', c: 's-fuchsia', rot: '-1.5deg', rd: 'rd2' },
+  { t: 'Тёплая компания без оценок', d: 'Здесь понимают и поддерживают — приходи со своим настроением.', c: 's-card', rot: '1deg', rd: 'rd4' }
 ]
 
 const directions = [
@@ -24,7 +24,7 @@ const directions = [
   { emoji: '🖍️', t: 'Масляная пастель', d: 'Сочные штрихи ложатся как краска — без кисти и растворителей.', span: 'lg:col-span-5', c: 's-fuchsia', rot: '-2deg' },
   { emoji: '🌸', t: 'Сухая пастель', d: 'Бархатистая растушёвка и пудровые переходы цвета.', span: 'lg:col-span-7', c: 's-card', rot: '1.5deg' },
   { emoji: '🌿', t: 'Пленэры', d: 'Выходим на воздух ловить свет, погоду и живой мотив.', span: 'lg:col-span-6', c: 's-sky', rot: '1deg' },
-  { emoji: '🧒', t: 'Студия с 10 лет', d: 'Взрослые и дети, семейный формат обучения.', span: 'lg:col-span-6', c: 's-sun', rot: '-1.5deg' }
+  { emoji: '🎓', t: 'Взрослым и абитуриентам', d: 'Портфолио для поступления и занятия для души; детям — по записи с 10 лет.', span: 'lg:col-span-6', c: 's-sun', rot: '-1.5deg' }
 ]
 
 const events = {
@@ -43,16 +43,21 @@ const basics = {
 const courses = [
   { emoji: '✏️', t: 'Академический рисунок', note: 'Постановка руки, форма и тон.' },
   { emoji: '🎨', t: 'Живопись', note: 'Масло, гуашь и акварель.' },
+  { emoji: '🕯️', t: 'Голландская живопись', note: 'Тёплый свет, натюрморт и глубокие тени.' },
+  { emoji: '🌻', t: 'Постимпрессионизм', note: 'Цвет, мазок и настроение по следам великих.' },
   { emoji: '💻', t: 'Цифровое искусство', note: 'Планшет и слои.' },
   { emoji: '🖌️', t: 'Акрил', note: 'Плотный мазок и декор.' },
   { emoji: '🖍️', t: 'Масляная пастель', note: 'Насыщенный цвет без кисти.' },
   { emoji: '🌸', t: 'Сухая пастель', note: 'Пудровая растушёвка.' },
+  { emoji: '🧑', t: 'Основы портрета', note: 'Пропорции, построение и характер лица.' },
+  { emoji: '🎭', t: 'Портрет маслом', note: 'Объём, кожа и живой взгляд кистью.' },
+  { emoji: '👗', t: 'Fashion-иллюстрация', note: 'Силуэт, поза и стиль в рисунке.' },
   { emoji: '🌿', t: 'Пленэры', note: 'Рисуем на воздухе.' }
 ]
 
 const steps = [
   { n: '1', t: 'Запишись на пробное', d: 'Одно бесплатное занятие — в Telegram или по телефону, без предоплат.', c: 's-sun', rot: '-2deg' },
-  { n: '2', t: 'Познакомимся со школой', d: 'Покажем мастерскую, познакомим с преподавателями и расскажем про абонементы.', c: 's-sky', rot: '1.5deg' },
+  { n: '2', t: 'Познакомимся со школой', d: 'Покажем мастерскую, нальём чай, познакомим с преподавателями и расскажем про абонементы.', c: 's-sky', rot: '1.5deg' },
   { n: '3', t: 'Выбери свой ритм', d: 'После пробного решаешь сам: абонемент, отдельный курс или «Аzбука».', c: 's-lime', rot: '-1deg' }
 ]
 
@@ -62,10 +67,10 @@ const plans = [
   { tag: 'Премиум', emoji: '👑', d: 'Максимум погружения и внимания для быстрого результата.', perks: ['Приоритетное расписание', 'Все техники и пленэры', 'Персональные рекомендации', 'Закрытые события комьюнити'], c: 's-card', rot: '1.5deg', accent: false }
 ]
 
-const impressions = [
-  'Пришла на пробное «просто посмотреть» — осталась на год.',
-  'Впервые за много лет почувствовала, что реально могу рисовать.',
-  'Ходим всей семьёй: я на пастель, дочка — в студию.'
+const reviews = [
+  { t: 'Пришла на пробное «просто посмотреть» — и осталась на год. Здесь правда слышат и не сравнивают.', n: 'Анна, живопись' },
+  { t: 'Готовила портфолио и впервые поняла: рисунок — это не талант, а разбор. Поступила туда, куда хотела.', n: 'Полина, абитуриентка' },
+  { t: 'Хожу после работы как на терапию: растения, чай, свои люди и ни одной оценки за целый день.', n: 'Марина, пастель' }
 ]
 
 const socials = [
@@ -76,10 +81,53 @@ const socials = [
 ]
 
 const marquee = ['Рисуй без оглядки', 'AZ.art', 'Екатеринбург', 'проспект Ленина 49', '360 дней в году', 'с 10 до 21', 'масляная пастель', 'пленэры']
+
+const faqs = [
+  { q: 'Я совсем не умею рисовать. Мне к вам можно?', a: 'Конечно! Большинство взрослых приходит с чистого листа — и это абсолютно нормально. Мы начинаем с основ и идём в твоём темпе, без сравнений и оценок.' },
+  { q: 'Что брать с собой на занятие?', a: 'Ничего особенного — мольберты, краски, пастель и бумага уже ждут в студии. Приходи просто с желанием рисовать и настроением.' },
+  { q: 'Я хочу поступать на худграфика. Поможете?', a: 'Да, это одна из наших сильных сторон: ставим руку, собираем портфолио и готовим к экзаменам. При этом у нас учатся и просто «для души» — атмосфера одна и та же, тёплая.' },
+  { q: 'Сколько длится занятие и как часто ходить?', a: 'Занятие идёт примерно 2–3 часа, чтобы успеть войти в поток. Частоту выбираешь сам — под неё и подбираем абонемент на пробном.' },
+  { q: 'А если захочу поменять направление?', a: 'Легко, в любой момент и без потери прогресса. Сегодня пастель, завтра портрет маслом или пленэр — мы подстроимся под настроение.' },
+  { q: 'Как оплатить и правда ли пробное бесплатное?', a: 'Да, первое занятие бесплатное и ни к чему не обязывает. Абонемент и стоимость обсудим там же — спокойно, за чашкой чая и без давления.' }
+]
+
+const teamPerks = [
+  { icon: 'i-lucide-palette', t: 'Мастерская в центре', d: 'Свет, мольберты и материалы — всё готово для твоих занятий.', c: 's-sky' },
+  { icon: 'i-lucide-calendar', t: 'Гибкий график', d: 'Собирай свои группы и часы так, как удобно именно тебе.', c: 's-sun' },
+  { icon: 'i-lucide-users', t: 'Живое комьюнити', d: 'Художники, которые горят делом и поддерживают друг друга.', c: 's-lavender' },
+  { icon: 'i-lucide-graduation-cap', t: 'Рост и обмен опытом', d: 'Методика, разборы и обучение — расти вместе с нами.', c: 's-lime' }
+]
+
+const openFaq = ref(null)
+const toggleFaq = (i) => {
+  openFaq.value = openFaq.value === i ? null : i
+}
 </script>
 
 <template>
   <div>
+    <svg
+      class="pointer-events-none absolute h-0 w-0"
+      aria-hidden="true"
+    >
+      <filter id="rough-marker">
+        <feTurbulence
+          type="fractalNoise"
+          baseFrequency="0.018 0.026"
+          numOctaves="3"
+          seed="7"
+          result="noise"
+        />
+        <feDisplacementMap
+          in="SourceGraphic"
+          in2="noise"
+          scale="6"
+          xChannelSelector="R"
+          yChannelSelector="G"
+        />
+      </filter>
+    </svg>
+
     <section class="relative overflow-hidden bg-paper">
       <div class="pointer-events-none absolute -top-24 -right-16 size-80 animate-drift rounded-full bg-fuchsia/20 blur-3xl" />
       <div class="pointer-events-none absolute -bottom-32 -left-20 size-72 rounded-full bg-sun/25 blur-3xl" />
@@ -114,9 +162,9 @@ const marquee = ['Рисуй без оглядки', 'AZ.art', 'Екатерин
             class="rise mt-7 max-w-xl text-lg font-semibold text-inksoft"
             style="animation-delay: 0.24s"
           >
-            AZ.art — творческое комьюнити, где каждый взрослый, независимо от
-            уровня подготовки, открывает в себе художника, снимает стресс и
-            получает удовольствие от занятий.
+            AZ.art — творческое комьюнити, где каждый взрослый открывает в себе
+            художника в тёплой, домашней атмосфере: среди растений, понимания и
+            <span class="marker-lime font-bold text-ink">без оценок</span>.
           </p>
 
           <div
@@ -174,13 +222,15 @@ const marquee = ['Рисуй без оглядки', 'AZ.art', 'Екатерин
             </p>
           </div>
           <div
-            class="polaroid rd4 absolute bottom-2 left-16 w-44"
+            class="sheet marker-frame absolute bottom-2 left-16 w-44 p-2 shadow-[5px_7px_0_var(--sticker-shadow)]"
             style="transform: rotate(4deg)"
           >
-            <div class="flex aspect-square items-center justify-center rounded-2xl bg-fuchsia text-7xl">
-              🌿
-            </div>
-            <p class="mt-2 text-center font-hand text-2xl text-ink">
+            <img
+              src="/plein-air.jpg"
+              alt="Набросок садовых ворот в зелени — пленэр"
+              class="aspect-square w-full rounded-[3px] object-cover"
+            >
+            <p class="mt-1 text-center font-hand text-3xl text-sketch underline decoration-wavy decoration-2 underline-offset-4">
               пленэр
             </p>
           </div>
@@ -192,9 +242,13 @@ const marquee = ['Рисуй без оглядки', 'AZ.art', 'Екатерин
             360<br>дней<br>в году
           </span>
           <span
-            class="absolute bottom-0 right-0 font-hand text-3xl text-fuchsia"
+            class="absolute right-0 bottom-0 font-hand text-3xl text-fuchsia"
             style="transform: rotate(-8deg)"
           >с нуля — ок!</span>
+          <span
+            class="sticker rd5 s-card absolute -bottom-3 left-0 flex size-12 items-center justify-center text-2xl animate-float"
+            style="--rot: -10deg"
+          >🪴</span>
         </div>
       </div>
     </section>
@@ -222,26 +276,15 @@ const marquee = ['Рисуй без оглядки', 'AZ.art', 'Екатерин
     </div>
 
     <section class="relative bg-paper2 py-24 sm:py-28">
-      <div class="wave absolute -top-[55px] right-0 left-0 text-paper2">
-        <svg
-          viewBox="0 0 1200 60"
-          preserveAspectRatio="none"
-          aria-hidden="true"
-        >
-          <path
-            fill="currentColor"
-            d="M0,28 C200,60 400,0 600,30 C800,60 1000,8 1200,32 L1200,60 L0,60 Z"
-          />
-        </svg>
-      </div>
+      <AzTear color="paper" />
 
-      <div class="mx-auto max-w-6xl px-4">
+      <div class="relative mx-auto max-w-6xl px-4">
         <div class="mb-12 text-center">
           <p class="font-hand text-3xl text-fuchsia">
             почему именно мы?
           </p>
           <h2 class="mt-1 puffy text-4xl sm:text-6xl">
-            Место, где можно выдохнуть
+            Место, где можно <span class="marker-lime">выдохнуть</span>
           </h2>
         </div>
 
@@ -269,26 +312,44 @@ const marquee = ['Рисуй без оглядки', 'AZ.art', 'Екатерин
       id="directions"
       class="relative bg-paper py-24 sm:py-28"
     >
-      <div class="wave absolute -top-[55px] right-0 left-0 text-paper">
-        <svg
-          viewBox="0 0 1200 60"
-          preserveAspectRatio="none"
-          aria-hidden="true"
+      <AzTear color="paper2" />
+
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute top-28 right-2 z-0 hidden lg:block"
+      >
+        <div
+          class="sticker s-card rd2 tape p-2"
+          style="--rot: 5deg"
         >
-          <path
-            fill="currentColor"
-            d="M0,32 C150,4 350,56 600,24 C850,-4 1050,52 1200,26 L1200,60 L0,60 Z"
+          <AzSketch
+            name="busts"
+            class="w-36 text-ink"
           />
-        </svg>
+        </div>
+      </div>
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute bottom-12 -left-2 z-0 hidden xl:block"
+      >
+        <div
+          class="sticker s-card rd1 p-2"
+          style="--rot: -4deg"
+        >
+          <AzSketch
+            name="columns"
+            class="w-32"
+          />
+        </div>
       </div>
 
-      <div class="mx-auto max-w-6xl px-4">
+      <div class="relative mx-auto max-w-6xl px-4">
         <div class="mb-12 flex flex-wrap items-end justify-between gap-4">
           <h2 class="puffy text-5xl sm:text-7xl">
             Направления
           </h2>
           <p class="max-w-sm font-hand text-2xl text-inksoft">
-            выбирай под настроение и меняй путь без потери прогресса ✏️
+            выбирай под настроение и меняй путь <span class="marker-sky font-bold text-ink">без потери прогресса</span> ✏️
           </p>
         </div>
 
@@ -300,7 +361,7 @@ const marquee = ['Рисуй без оглядки', 'AZ.art', 'Екатерин
             :class="[d.c, d.span]"
             :style="`--rot: ${d.rot}`"
           >
-            <div class="text-5xl transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110">
+            <div class="text-5xl transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-105">
               {{ d.emoji }}
             </div>
             <h3 class="mt-4 font-display text-2xl font-bold">
@@ -342,8 +403,11 @@ const marquee = ['Рисуй без оглядки', 'AZ.art', 'Екатерин
       </div>
     </section>
 
-    <div class="bg-paper py-6 text-center">
-      <h2 class="puffy outline-text text-5xl sm:text-8xl">
+    <div class="relative bg-paper py-14 text-center">
+      <p class="font-hand text-2xl text-inksoft">
+        листай дальше ↓
+      </p>
+      <h2 class="puffy outline-text mt-1 text-5xl sm:text-8xl">
         выбери своё
       </h2>
     </div>
@@ -352,20 +416,24 @@ const marquee = ['Рисуй без оглядки', 'AZ.art', 'Екатерин
       id="courses"
       class="relative bg-paper2 py-24 sm:py-28"
     >
-      <div class="wave absolute -top-[55px] right-0 left-0 text-paper2">
-        <svg
-          viewBox="0 0 1200 60"
-          preserveAspectRatio="none"
-          aria-hidden="true"
+      <AzTear color="paper" />
+
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute top-28 right-4 z-0 hidden lg:block"
+      >
+        <div
+          class="sticker s-card rd1 p-2"
+          style="--rot: -5deg"
         >
-          <path
-            fill="currentColor"
-            d="M0,24 C200,56 400,4 600,32 C800,56 1000,8 1200,30 L1200,60 L0,60 Z"
+          <AzSketch
+            name="portrait"
+            class="w-24 text-sketch"
           />
-        </svg>
+        </div>
       </div>
 
-      <div class="mx-auto max-w-6xl px-4">
+      <div class="relative mx-auto max-w-6xl px-4">
         <div
           class="reveal sticker s-card tape relative overflow-hidden p-8 sm:p-12"
           style="--rot: -0.5deg"
@@ -456,20 +524,9 @@ const marquee = ['Рисуй без оглядки', 'AZ.art', 'Екатерин
       id="trial"
       class="relative bg-paper py-24 sm:py-28"
     >
-      <div class="wave absolute -top-[55px] right-0 left-0 text-paper">
-        <svg
-          viewBox="0 0 1200 60"
-          preserveAspectRatio="none"
-          aria-hidden="true"
-        >
-          <path
-            fill="currentColor"
-            d="M0,30 C150,2 350,58 600,26 C850,-2 1050,54 1200,28 L1200,60 L0,60 Z"
-          />
-        </svg>
-      </div>
+      <AzTear color="paper2" />
 
-      <div class="mx-auto max-w-6xl px-4">
+      <div class="relative mx-auto max-w-6xl px-4">
         <div class="mb-10 max-w-2xl">
           <p class="font-hand text-3xl text-fuchsia">
             как это устроено
@@ -489,7 +546,7 @@ const marquee = ['Рисуй без оглядки', 'AZ.art', 'Екатерин
           />
           <p class="text-lg font-bold">
             Пробное занятие бесплатное и ни к чему не обязывает. Никаких предоплат
-            и «только сегодня» — просто час творчества и честный разговор.
+            и «только сегодня» — просто час творчества, чашка чая и честный разговор.
           </p>
         </div>
 
@@ -518,27 +575,31 @@ const marquee = ['Рисуй без оглядки', 'AZ.art', 'Екатерин
       id="plans"
       class="relative bg-paper2 py-24 sm:py-28"
     >
-      <div class="wave absolute -top-[55px] right-0 left-0 text-paper2">
-        <svg
-          viewBox="0 0 1200 60"
-          preserveAspectRatio="none"
-          aria-hidden="true"
+      <AzTear color="paper" />
+
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute top-24 right-3 z-0 hidden lg:block"
+      >
+        <div
+          class="sticker s-card rd2 tape p-2 animate-float"
+          style="--rot: 6deg"
         >
-          <path
-            fill="currentColor"
-            d="M0,26 C200,58 400,2 600,30 C800,58 1000,6 1200,32 L1200,60 L0,60 Z"
+          <AzSketch
+            name="bouquet"
+            class="w-28 text-sketch"
           />
-        </svg>
+        </div>
       </div>
 
-      <div class="mx-auto max-w-6xl px-4">
+      <div class="relative mx-auto max-w-6xl px-4">
         <div class="mb-12 flex flex-wrap items-end justify-between gap-4">
           <div>
             <p class="font-hand text-3xl text-fuchsia">
               абонементы
             </p>
             <h2 class="mt-1 puffy text-5xl sm:text-7xl">
-              Выбери свой ритм
+              Выбери <span class="marker-sun">свой ритм</span>
             </h2>
           </div>
           <p class="max-w-sm font-hand text-2xl text-inksoft">
@@ -600,47 +661,44 @@ const marquee = ['Рисуй без оглядки', 'AZ.art', 'Екатерин
       </div>
     </section>
 
-    <section class="relative bg-paper py-24 sm:py-28">
-      <div class="wave absolute -top-[55px] right-0 left-0 text-paper">
-        <svg
-          viewBox="0 0 1200 60"
-          preserveAspectRatio="none"
-          aria-hidden="true"
-        >
-          <path
-            fill="currentColor"
-            d="M0,32 C150,4 350,56 600,24 C850,-4 1050,52 1200,26 L1200,60 L0,60 Z"
-          />
-        </svg>
-      </div>
+    <section
+      id="reviews"
+      class="relative bg-paper py-24 sm:py-28"
+    >
+      <AzTear color="paper2" />
 
-      <div class="mx-auto grid max-w-6xl gap-8 px-4 lg:grid-cols-2">
+      <div class="relative mx-auto grid max-w-6xl gap-8 px-4 lg:grid-cols-2">
         <div
-          class="reveal sticker s-sky p-8 sm:p-10"
+          class="reveal watercolor-paper rd-paper tape relative p-8 sm:p-10"
           style="--rot: -1deg"
         >
-          <p class="font-hand text-3xl">
+          <p class="font-hand text-3xl text-[#c2357f]">
             впечатления после пробного
           </p>
           <ul class="mt-5 space-y-5">
             <li
-              v-for="im in impressions"
-              :key="im"
-              class="border-b-2 border-dashed border-ink/20 pb-4 text-lg font-bold last:border-0"
+              v-for="r in reviews"
+              :key="r.n"
+              class="border-b-2 border-dashed border-[#2a1a12]/20 pb-4 last:border-0"
             >
-              «{{ im }}»
+              <p class="text-lg font-bold">
+                «{{ r.t }}»
+              </p>
+              <p class="mt-1 font-hand text-xl opacity-70">
+                — {{ r.n }}
+              </p>
             </li>
           </ul>
           <div class="mt-6 flex items-center gap-3">
             <span class="puffy text-5xl">5.0</span>
-            <div class="text-sun">
+            <div class="text-[#e0a23a]">
               ★★★★★
             </div>
           </div>
           <NuxtLink
             to="https://yandex.ru"
             target="_blank"
-            class="font-hand mt-2 inline-block text-xl text-ink/70 underline decoration-wavy"
+            class="font-hand mt-2 inline-block text-xl text-[#2a1a12]/70 underline decoration-wavy"
           >
             читать отзывы на Яндексе →
           </NuxtLink>
@@ -652,7 +710,7 @@ const marquee = ['Рисуй без оглядки', 'AZ.art', 'Екатерин
             style="transform: rotate(-5deg)"
           >
             <div class="flex aspect-square items-center justify-center rounded-2xl bg-lavender text-7xl">
-              ️
+              🖌️
             </div>
             <p class="mt-2 text-center font-hand text-2xl text-ink">
               моя первая работа
@@ -669,16 +727,185 @@ const marquee = ['Рисуй без оглядки', 'AZ.art', 'Екатерин
               акварельный вечер
             </p>
           </div>
+          <div
+            aria-hidden="true"
+            class="absolute bottom-0 left-2 w-32"
+            style="transform: rotate(-4deg)"
+          >
+            <div class="sticker s-card rd1 p-2">
+              <AzSketch
+                name="portrait"
+                class="w-full text-sketch"
+              />
+            </div>
+          </div>
           <span
-            class="sticker rd5 s-fuchsia absolute bottom-2 left-10 flex size-24 flex-col items-center justify-center text-center font-display text-sm font-bold leading-tight animate-float"
+            class="sticker rd5 s-fuchsia absolute right-6 bottom-6 flex size-24 flex-col items-center justify-center text-center font-display text-sm font-bold leading-tight animate-float"
             style="--rot: -10deg"
           >
             рейтинг<br>5.0
           </span>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="faq"
+      class="relative bg-paper2 py-24 sm:py-28"
+    >
+      <AzTear color="paper" />
+
+      <div class="relative mx-auto grid max-w-6xl gap-12 px-4 lg:grid-cols-12">
+        <div class="lg:col-span-5">
+          <p class="font-hand text-3xl text-fuchsia">
+            остались вопросы?
+          </p>
+          <h2 class="mt-1 puffy text-5xl sm:text-7xl">
+            Отвечаем <span class="marker-sky">честно</span>
+          </h2>
+          <p class="mt-5 max-w-sm text-lg font-semibold text-inksoft">
+            Собрали то, о чём чаще всего спрашивают перед пробным. Не нашёл свой
+            вопрос — напиши нам, ответим по-человечески.
+          </p>
+          <NuxtLink
+            :to="tgHref"
+            target="_blank"
+            class="btn btn-fuchsia rd1 mt-7"
+          >
+            <UIcon
+              name="i-simple-icons-telegram"
+              class="size-5"
+            />
+            Задать свой вопрос
+          </NuxtLink>
           <span
-            class="absolute right-6 bottom-6 font-hand text-3xl text-fuchsia"
-            style="transform: rotate(-6deg)"
-          >приходи рисовать!</span>
+            class="sticker rd5 s-sun mt-8 hidden animate-float lg:inline-block px-4 py-3 font-hand text-2xl font-bold"
+            style="--rot: -8deg"
+          >
+            без страха и оценок ✨
+          </span>
+        </div>
+
+        <div class="space-y-4 lg:col-span-7">
+          <div
+            v-for="(f, i) in faqs"
+            :key="f.q"
+            class="reveal sticker s-card p-5 sm:p-6"
+            :class="i % 2 ? 'rd2' : 'rd1'"
+            :style="`--rot: ${i % 2 ? 0.6 : -0.6}deg`"
+          >
+            <button
+              type="button"
+              class="flex w-full items-center justify-between gap-4 text-left"
+              :aria-expanded="openFaq === i"
+              @click="toggleFaq(i)"
+            >
+              <span class="flex items-center gap-3 font-display text-lg font-bold sm:text-xl">
+                <span class="font-hand text-2xl text-fuchsia">{{ String(i + 1).padStart(2, '0') }}</span>
+                {{ f.q }}
+              </span>
+              <UIcon
+                name="i-lucide-chevron-down"
+                class="size-5 shrink-0 text-fuchsia transition-transform duration-300"
+                :class="openFaq === i ? 'rotate-180' : ''"
+              />
+            </button>
+            <div
+              class="grid transition-[grid-template-rows] duration-300 ease-out"
+              :style="{ gridTemplateRows: openFaq === i ? '1fr' : '0fr' }"
+            >
+              <div class="overflow-hidden">
+                <p class="pt-3 pl-9 font-semibold text-inksoft">
+                  {{ f.a }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="team"
+      class="relative overflow-hidden bg-paper py-24 sm:py-28"
+    >
+      <AzTear color="paper2" />
+      <div class="pointer-events-none absolute -top-20 -right-10 size-72 animate-drift rounded-full bg-lavender/20 blur-3xl" />
+      <div class="pointer-events-none absolute -bottom-24 left-0 size-72 rounded-full bg-lime/20 blur-3xl" />
+
+      <div class="relative mx-auto max-w-6xl px-4">
+        <div class="mb-12 text-center">
+          <p class="font-hand text-3xl text-fuchsia">
+            мы ищем своих
+          </p>
+          <h2 class="mt-1 puffy text-5xl sm:text-7xl">
+            Стань частью команды
+          </h2>
+        </div>
+
+        <div class="grid gap-7 lg:grid-cols-2 lg:items-center">
+          <div
+            class="reveal sticker s-fuchsia tape relative p-8 sm:p-10"
+            style="--rot: -1deg"
+          >
+            <span
+              class="absolute -top-5 right-8 text-5xl animate-float"
+              style="--rot: 10deg"
+            >🎨</span>
+            <h3 class="puffy text-3xl sm:text-4xl">
+              Рисуешь сам —<br>научи других?
+            </h3>
+            <p class="mt-4 text-lg font-semibold text-white/90">
+              Если ты художник и тебе нравится делиться — у нас есть место. Мы не
+              ищем «идеальное резюме»: нам важны горящие глаза и умение зажечь
+              других. Приходи знакомиться — расскажем, как устроена школа, и
+              попробуем провести занятие вместе.
+            </p>
+            <div class="mt-7 flex flex-wrap gap-3">
+              <NuxtLink
+                :to="tgHref"
+                target="_blank"
+                class="btn btn-card rd1"
+              >
+                <UIcon
+                  name="i-simple-icons-telegram"
+                  class="size-5"
+                />
+                Написать нам
+              </NuxtLink>
+              <NuxtLink
+                :to="phoneHref"
+                class="btn btn-ink rd2"
+              >
+                <UIcon
+                  name="i-lucide-phone"
+                  class="size-5"
+                />
+                Позвонить
+              </NuxtLink>
+            </div>
+          </div>
+
+          <div class="grid gap-5 sm:grid-cols-2">
+            <div
+              v-for="(p, i) in teamPerks"
+              :key="p.t"
+              class="reveal sticker p-6"
+              :class="[p.c, i % 2 ? 'rd2' : 'rd1']"
+              :style="`--rot: ${i % 2 ? 1.5 : -1.5}deg`"
+            >
+              <UIcon
+                :name="p.icon"
+                class="size-7"
+              />
+              <h4 class="mt-3 font-display text-lg font-bold">
+                {{ p.t }}
+              </h4>
+              <p class="mt-1 font-semibold opacity-90">
+                {{ p.d }}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -687,20 +914,17 @@ const marquee = ['Рисуй без оглядки', 'AZ.art', 'Екатерин
       id="contacts"
       class="relative bg-paper2 py-24 sm:py-28"
     >
-      <div class="wave absolute -top-[55px] right-0 left-0 text-paper2">
-        <svg
-          viewBox="0 0 1200 60"
-          preserveAspectRatio="none"
-          aria-hidden="true"
-        >
-          <path
-            fill="currentColor"
-            d="M0,24 C200,56 400,4 600,32 C800,56 1000,8 1200,30 L1200,60 L0,60 Z"
-          />
-        </svg>
+      <AzTear color="paper" />
+
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute top-20 right-6 z-0 hidden text-5xl animate-float lg:block"
+        style="--rot: 8deg"
+      >
+        🌿
       </div>
 
-      <div class="mx-auto max-w-6xl px-4">
+      <div class="relative mx-auto max-w-6xl px-4">
         <div class="grid gap-12 lg:grid-cols-2">
           <div>
             <h2 class="puffy text-5xl sm:text-7xl">
@@ -739,7 +963,7 @@ const marquee = ['Рисуй без оглядки', 'AZ.art', 'Екатерин
             <NuxtLink
               :to="mapHref"
               target="_blank"
-              class="reveal sticker s-card p-6"
+              class="reveal sticker s-card min-w-0 p-6"
               style="--rot: -1.5deg"
             >
               <UIcon
@@ -751,7 +975,7 @@ const marquee = ['Рисуй без оглядки', 'AZ.art', 'Екатерин
             </NuxtLink>
             <NuxtLink
               :to="phoneHref"
-              class="reveal sticker s-card p-6"
+              class="reveal sticker s-card min-w-0 p-6"
               style="--rot: 1.5deg"
             >
               <UIcon
@@ -764,7 +988,7 @@ const marquee = ['Рисуй без оглядки', 'AZ.art', 'Екатерин
             <NuxtLink
               :to="tgHref"
               target="_blank"
-              class="reveal sticker s-card p-6"
+              class="reveal sticker s-card min-w-0 p-6"
               style="--rot: 1deg"
             >
               <UIcon
@@ -772,10 +996,10 @@ const marquee = ['Рисуй без оглядки', 'AZ.art', 'Екатерин
                 class="size-6 text-fuchsia"
               />
               <p class="mt-2 font-hand text-xl text-inksoft">telegram</p>
-              <p class="font-display text-base font-bold">@shkola_risovaniya_azart</p>
+              <p class="font-display text-base font-bold leading-tight break-all">@shkola_risovaniya_azart</p>
             </NuxtLink>
             <div
-              class="reveal sticker s-card p-6"
+              class="reveal sticker s-card min-w-0 p-6"
               style="--rot: -1deg"
             >
               <UIcon

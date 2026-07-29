@@ -27,8 +27,12 @@ const nav = [
   { label: 'направления', to: '#directions' },
   { label: 'курсы', to: '#courses' },
   { label: 'пробное', to: '#trial' },
-  { label: 'абонементы', to: '#plans' }
+  { label: 'абонементы', to: '#plans' },
+  { label: 'отзывы', to: '#reviews' },
+  { label: 'контакты', to: '#contacts' }
 ]
+
+const menuOpen = ref(false)
 </script>
 
 <template>
@@ -38,25 +42,42 @@ const nav = [
         <NuxtLink
           to="/"
           aria-label="AZ.art — школа рисования, на главную"
-          class="sticker rd1 s-card flex items-center gap-2 px-3 py-1.5"
+          class="sticker inline-block overflow-hidden rounded-2xl bg-white p-1"
           style="--rot: -2deg"
         >
-          <LogoAz class="h-7 w-auto text-ink" />
+          <img
+            src="/logo.jpg"
+            alt="AZ.art"
+            class="block h-9 w-auto object-cover aspect-[2.3/1]"
+          >
         </NuxtLink>
 
-        <nav class="hidden items-center gap-1 md:flex">
+        <nav class="hidden items-center gap-5 md:flex">
           <NuxtLink
             v-for="(item, i) in nav"
             :key="item.to"
             :to="item.to"
-            class="font-hand text-xl font-bold text-ink/80 transition-colors hover:text-fuchsia"
+            class="font-hand text-xl font-bold text-ink/80 underline-offset-[6px] transition-all duration-200 hover:-translate-y-0.5 hover:text-fuchsia hover:underline hover:decoration-wavy hover:decoration-2 lg:text-2xl"
             :style="`--rot: ${i % 2 ? 1.5 : -1.5}deg; transform: rotate(var(--rot))`"
           >
             {{ item.label }}
           </NuxtLink>
         </nav>
 
-        <div class="flex items-center gap-2">
+        <div class="relative flex items-center gap-2">
+          <button
+            type="button"
+            class="sticker rd5 s-card flex size-10 items-center justify-center md:hidden"
+            :aria-label="menuOpen ? 'Закрыть меню' : 'Открыть меню'"
+            :aria-expanded="menuOpen"
+            @click="menuOpen = !menuOpen"
+          >
+            <UIcon
+              :name="menuOpen ? 'i-lucide-x' : 'i-lucide-menu'"
+              class="size-5"
+            />
+          </button>
+
           <NuxtLink
             to="https://t.me/shkola_risovaniya_azart"
             target="_blank"
@@ -69,6 +90,35 @@ const nav = [
             Записаться
           </NuxtLink>
           <UColorModeButton class="sticker rd5 s-card !size-10" />
+
+          <div
+            v-if="menuOpen"
+            class="rise sticker s-card rd2 absolute right-0 top-full z-50 mt-3 w-60 p-3 md:hidden"
+            style="--rot: 1deg"
+          >
+            <NuxtLink
+              v-for="(item, i) in nav"
+              :key="item.to"
+              :to="item.to"
+              class="block px-3 py-2 font-hand text-2xl font-bold text-ink transition-colors hover:text-fuchsia"
+              :style="`--rot: ${i % 2 ? 1 : -1}deg; transform: rotate(var(--rot))`"
+              @click="menuOpen = false"
+            >
+              {{ item.label }}
+            </NuxtLink>
+            <NuxtLink
+              to="https://t.me/shkola_risovaniya_azart"
+              target="_blank"
+              class="btn btn-fuchsia rd1 mt-2 w-full justify-center text-base"
+              @click="menuOpen = false"
+            >
+              <UIcon
+                name="i-simple-icons-telegram"
+                class="size-4"
+              />
+              Записаться
+            </NuxtLink>
+          </div>
         </div>
       </div>
     </header>
@@ -78,23 +128,21 @@ const nav = [
     </main>
 
     <footer class="relative bg-ink text-paper">
-      <div class="wave -mt-px text-ink">
-        <svg
-          viewBox="0 0 1200 60"
-          preserveAspectRatio="none"
-          aria-hidden="true"
-        >
-          <path
-            fill="currentColor"
-            d="M0,32 C150,64 350,0 600,28 C850,56 1050,4 1200,30 L1200,60 L0,60 Z"
-          />
-        </svg>
-      </div>
+      <AzTear color="paper2" />
 
       <div class="mx-auto max-w-6xl px-4 py-14">
         <div class="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div class="max-w-sm">
-            <LogoAz class="h-9 w-auto text-paper" />
+            <span
+              class="sticker inline-block overflow-hidden rounded-2xl bg-white p-1"
+              style="--rot: -2deg"
+            >
+              <img
+                src="/logo.jpg"
+                alt="AZ.art"
+                class="block h-8 w-auto object-cover aspect-[2.3/1]"
+              >
+            </span>
             <p class="mt-4 font-hand text-2xl text-paper/80">
               Рисуй без оглядки!
             </p>
