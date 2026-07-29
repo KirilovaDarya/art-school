@@ -1,74 +1,82 @@
+<script setup>
+const courses = [
+  { emoji: '🎨', title: 'Живопись', text: 'Масло, акрил, гуашь — от первого мазка до готовой картины.' },
+  { emoji: '✏️', title: 'Академический рисунок', text: 'Композиция, перспектива и светотень — база, на которой стоит всё.' },
+  { emoji: '💧', title: 'Акварель', text: 'Лёгкость и воздух: учимся управлять самой капризной краской.' },
+  { emoji: '🧒', title: 'Детская студия', text: 'Для детей от 6 лет: рисуем, играем и не боимся чистого листа.' }
+]
+</script>
+
 <template>
   <div>
-    <UPageHero
-      title="Nuxt Starter Template"
-      description="A production-ready starter template powered by Nuxt UI. Build beautiful, accessible, and performant applications in minutes, not hours."
-      :links="[{
-        label: 'Get started',
-        to: 'https://ui.nuxt.com/docs/getting-started/installation/nuxt',
-        target: '_blank',
-        trailingIcon: 'i-lucide-arrow-right',
-        size: 'xl'
-      }, {
-        label: 'Use this template',
-        to: 'https://github.com/nuxt-ui-templates/starter',
-        target: '_blank',
-        icon: 'i-simple-icons-github',
-        size: 'xl',
-        color: 'neutral',
-        variant: 'subtle'
-      }]"
-    />
+    <section class="relative overflow-hidden">
+      <div class="pointer-events-none absolute -top-32 -right-32 size-96 rounded-full bg-primary/15 blur-3xl" />
+      <div class="pointer-events-none absolute -bottom-40 -left-24 size-80 rounded-full bg-amber-300/20 blur-3xl" />
 
-    <UPageSection
-      id="features"
-      title="Everything you need to build modern Nuxt apps"
-      description="Start with a solid foundation. This template includes all the essentials for building production-ready applications with Nuxt UI's powerful component system."
-      :features="[{
-        icon: 'i-lucide-rocket',
-        title: 'Production-ready from day one',
-        description: 'Pre-configured with TypeScript, ESLint, Tailwind CSS, and all the best practices. Focus on building features, not setting up tooling.'
-      }, {
-        icon: 'i-lucide-palette',
-        title: 'Beautiful by default',
-        description: 'Leveraging Nuxt UI\'s design system with automatic dark mode, consistent spacing, and polished components that look great out of the box.'
-      }, {
-        icon: 'i-lucide-zap',
-        title: 'Lightning fast',
-        description: 'Optimized for performance with SSR/SSG support, automatic code splitting, and edge-ready deployment. Your users will love the speed.'
-      }, {
-        icon: 'i-lucide-blocks',
-        title: '100+ components included',
-        description: 'Access Nuxt UI\'s comprehensive component library. From forms to navigation, everything is accessible, responsive, and customizable.'
-      }, {
-        icon: 'i-lucide-code-2',
-        title: 'Developer experience first',
-        description: 'Auto-imports, hot module replacement, and TypeScript support. Write less boilerplate and ship more features.'
-      }, {
-        icon: 'i-lucide-shield-check',
-        title: 'Built for scale',
-        description: 'Enterprise-ready architecture with proper error handling, SEO optimization, and security best practices built-in.'
-      }]"
-    />
+      <div class="mx-auto grid max-w-5xl items-center gap-10 px-4 py-20 sm:py-28 md:grid-cols-[1.4fr_1fr]">
+        <div>
+          <p class="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
+            ✨ Набор открыт
+          </p>
+          <h1 class="font-display text-4xl leading-tight font-bold sm:text-5xl">
+            Научим рисовать <span class="text-primary">с нуля</span>
+          </h1>
+          <p class="mt-5 max-w-md text-lg text-muted">
+            Школа рисования «Мазок»: небольшие группы, практикующие художники
+            и никакой скуки. Приходите на пробное занятие — это бесплатно.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <UButton to="#courses" size="xl" trailing-icon="i-lucide-arrow-down">
+              Выбрать направление
+            </UButton>
+            <UButton to="#trial" size="xl" color="neutral" variant="subtle">
+              Пробное занятие
+            </UButton>
+          </div>
+        </div>
+
+        <div class="hidden select-none md:block" aria-hidden="true">
+          <div class="animate-float text-center text-[10rem] leading-none">🖌️</div>
+          <div class="mt-2 flex justify-center gap-6 text-5xl">
+            <span class="transition-transform duration-300 hover:-translate-y-2 hover:rotate-12">🎨</span>
+            <span class="transition-transform duration-300 hover:-translate-y-2 hover:-rotate-12">✏️</span>
+            <span class="transition-transform duration-300 hover:-translate-y-2 hover:rotate-12">🖼️</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <UPageSection id="courses" title="Направления" description="Чему учим в «Мазке»">
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div
+          v-for="course in courses"
+          :key="course.title"
+          class="group rounded-xl border border-default bg-default/50 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-lg"
+        >
+          <div class="text-4xl transition-transform duration-300 group-hover:scale-125 group-hover:-rotate-6">
+            {{ course.emoji }}
+          </div>
+          <h3 class="mt-4 text-lg font-bold">
+            {{ course.title }}
+          </h3>
+          <p class="mt-2 text-sm text-muted">
+            {{ course.text }}
+          </p>
+        </div>
+      </div>
+    </UPageSection>
 
     <UPageSection>
       <UPageCTA
-        title="Ready to build your next Nuxt app?"
-        description="Join thousands of developers building with Nuxt and Nuxt UI. Get this template and start shipping today."
+        id="trial"
+        title="🖌️ Первое занятие — бесплатно"
+        description="Приходите познакомиться: покажем студию, подберём группу и нарисуем первую работу вместе."
         variant="subtle"
         :links="[{
-          label: 'Start building',
-          to: 'https://ui.nuxt.com/docs/getting-started/installation/nuxt',
-          target: '_blank',
+          label: 'Записаться',
+          to: 'mailto:hello@mazok.example',
           trailingIcon: 'i-lucide-arrow-right',
           color: 'neutral'
-        }, {
-          label: 'View on GitHub',
-          to: 'https://github.com/nuxt-ui-templates/starter',
-          target: '_blank',
-          icon: 'i-simple-icons-github',
-          color: 'neutral',
-          variant: 'outline'
         }]"
       />
     </UPageSection>
