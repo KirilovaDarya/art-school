@@ -12,7 +12,7 @@ const features = [
   { t: 'От классики до цифры', d: 'Меняй направление под настроение — без потери прогресса.', c: 's-sky', rot: '1.5deg', rd: 'rd2' },
   { t: 'Под тебя, а не под шаблон', d: 'Подстраиваем обучение под твой темп и восприятие — персонально.', c: 's-lavender', rot: '-1deg', rd: 'rd4' },
   { t: 'Тарифы под твой ритм', d: 'Плати только за тот объём, который реально осваиваешь.', c: 's-lime', rot: '2deg', rd: 'rd1' },
-  { t: 'Взрослым и будущим студентам', d: 'Готовим портфолио к поступлению и учим для души; детям — по записи с 10 лет.', c: 's-fuchsia', rot: '-1.5deg', rd: 'rd2' },
+  { t: 'Взрослым и будущим студентам', d: 'Готовим портфолио к поступлению и учим для души; детей берём по записи с 12 лет — усидчивых ребят.', c: 's-fuchsia', rot: '-1.5deg', rd: 'rd2' },
   { t: 'Тёплая компания без оценок', d: 'Здесь понимают и поддерживают — приходи со своим настроением.', c: 's-card', rot: '1deg', rd: 'rd4' }
 ]
 
@@ -24,7 +24,7 @@ const directions = [
   { emoji: '🖍️', t: 'Масляная пастель', d: 'Сочные штрихи ложатся как краска — без кисти и растворителей.', span: 'lg:col-span-5', c: 's-fuchsia', rot: '-2deg' },
   { emoji: '🌸', t: 'Сухая пастель', d: 'Бархатистая растушёвка и пудровые переходы цвета.', span: 'lg:col-span-7', c: 's-card', rot: '1.5deg' },
   { emoji: '🌿', t: 'Пленэры', d: 'Выходим на воздух ловить свет, погоду и живой мотив.', span: 'lg:col-span-6', c: 's-sky', rot: '1deg' },
-  { emoji: '🎓', t: 'Взрослым и абитуриентам', d: 'Портфолио для поступления и занятия для души; детям — по записи с 10 лет.', span: 'lg:col-span-6', c: 's-sun', rot: '-1.5deg' }
+  { emoji: '🎓', t: 'Взрослым и абитуриентам', d: 'Портфолио для поступления и занятия для души; детей берём по записи с 12 лет — усидчивых ребят.', span: 'lg:col-span-6', c: 's-sun', rot: '-1.5deg' }
 ]
 
 const events = {
@@ -77,6 +77,7 @@ const socials = [
   { label: 'Telegram', handle: '@shkola_risovaniya_azart', href: tgHref, icon: 'i-simple-icons-telegram', c: 's-sky' },
   { label: 'ВКонтакте', handle: 'vk.ru/shkola_risovaniya_azart', href: vkHref, icon: 'i-simple-icons-vk', c: 's-lavender' },
   { label: 'MAX', handle: 'max.ru', href: null, icon: 'i-lucide-message-circle', c: 's-sun' },
+  { label: '2ГИС', handle: '★ 4.9 · 284 отзыва', href: 'https://2gis.ru/ekaterinburg/search/AZ.art', icon: 'i-lucide-map-pinned', c: 's-fuchsia' },
   { label: 'Отзывы', handle: 'Яндекс · пл. 1905 года', href: null, icon: 'i-lucide-star', c: 's-lime' }
 ]
 
@@ -86,7 +87,8 @@ const faqs = [
   { q: 'Я совсем не умею рисовать. Мне к вам можно?', a: 'Конечно! Большинство взрослых приходит с чистого листа — и это абсолютно нормально. Мы начинаем с основ и идём в твоём темпе, без сравнений и оценок.' },
   { q: 'Что брать с собой на занятие?', a: 'Ничего особенного — мольберты, краски, пастель и бумага уже ждут в студии. Приходи просто с желанием рисовать и настроением.' },
   { q: 'Я хочу поступать на худграфика. Поможете?', a: 'Да, это одна из наших сильных сторон: ставим руку, собираем портфолио и готовим к экзаменам. При этом у нас учатся и просто «для души» — атмосфера одна и та же, тёплая.' },
-  { q: 'Сколько длится занятие и как часто ходить?', a: 'Занятие идёт примерно 2–3 часа, чтобы успеть войти в поток. Частоту выбираешь сам — под неё и подбираем абонемент на пробном.' },
+  { q: 'Берёте ли детей?', a: 'Да, по записи с 12 лет. Нам важно, чтобы ребёнок был усидчив — тогда занятие идёт в радость и ему, и всей группе. Приходите на пробное: познакомимся и посмотрим, комфортно ли вам у нас.' },
+  { q: 'Сколько длится занятие и как часто ходить?', a: 'Занятие длится 1 час 45 минут — ровно столько, чтобы войти в поток и не устать. Частоту выбираешь сам — под неё и подбираем абонемент на пробном.' },
   { q: 'А если захочу поменять направление?', a: 'Легко, в любой момент и без потери прогресса. Сегодня пастель, завтра портрет маслом или пленэр — мы подстроимся под настроение.' },
   { q: 'Как оплатить и правда ли пробное бесплатное?', a: 'Да, первое занятие бесплатное и ни к чему не обязывает. Абонемент и стоимость обсудим там же — спокойно, за чашкой чая и без давления.' }
 ]
@@ -129,10 +131,7 @@ const toggleFaq = (i) => {
     </svg>
 
     <section class="relative overflow-hidden bg-paper">
-      <div class="pointer-events-none absolute -top-24 -right-16 size-80 animate-drift rounded-full bg-fuchsia/20 blur-3xl" />
-      <div class="pointer-events-none absolute -bottom-32 -left-20 size-72 rounded-full bg-sun/25 blur-3xl" />
-
-      <div class="relative mx-auto grid max-w-6xl items-center gap-12 px-4 pt-16 pb-24 sm:pt-24 lg:grid-cols-12">
+      <div class="relative z-10 mx-auto grid max-w-6xl items-center gap-12 px-4 pt-16 pb-24 sm:pt-24 lg:grid-cols-12">
         <div class="lg:col-span-7">
           <span
             class="rise sticker rd1 s-lime inline-flex items-center gap-2 px-4 py-2 text-sm font-extrabold"
@@ -152,7 +151,7 @@ const toggleFaq = (i) => {
             Рисуй
           </h1>
           <h1
-            class="rise mt-1 puffy pop-text text-6xl text-fuchsia sm:text-8xl"
+            class="rise chalk-hand mt-2 text-fuchsia text-7xl sm:text-9xl"
             style="animation-delay: 0.16s"
           >
             без оглядки!
@@ -196,33 +195,28 @@ const toggleFaq = (i) => {
         </div>
 
         <div
-          class="relative hidden h-[26rem] lg:col-span-5 lg:block"
+          class="relative hidden h-[30rem] lg:col-span-5 lg:block"
           aria-hidden="true"
         >
           <div
-            class="polaroid rd4 absolute top-2 left-4 w-44"
-            style="transform: rotate(-7deg)"
-          >
-            <div class="flex aspect-square items-center justify-center rounded-2xl bg-sky text-7xl">
-              🎨
-            </div>
-            <p class="mt-2 text-center font-hand text-2xl text-ink">
-              первый мазок
-            </p>
-          </div>
-          <div
-            class="polaroid rd4 absolute top-10 right-2 w-40 tape"
+            class="sheet marker-frame absolute top-4 left-2 w-40 p-2 shadow-[5px_7px_0_var(--sticker-shadow)]"
             style="transform: rotate(6deg)"
           >
-            <div class="flex aspect-square items-center justify-center rounded-2xl bg-lime text-7xl">
-              🖍️
-            </div>
-            <p class="mt-2 text-center font-hand text-2xl text-ink">
+            <img
+              src="/pastel.jpg"
+              alt="Пастельный этюд: синие цветы на оранжевом фоне"
+              class="aspect-[4/5] w-full rounded-[3px] object-cover"
+            >
+            <p class="mt-1 text-center font-hand text-3xl text-sketch underline decoration-wavy decoration-2 underline-offset-4">
               пастель
             </p>
           </div>
+          <span
+            class="sticker rd2 s-sun absolute top-28 right-0 max-w-[10rem] px-4 py-3 text-center font-display text-sm leading-tight font-bold animate-float"
+            style="--rot: -6deg"
+          >здесь не ставят оценок ✨</span>
           <div
-            class="sheet marker-frame absolute bottom-2 left-16 w-44 p-2 shadow-[5px_7px_0_var(--sticker-shadow)]"
+            class="sheet marker-frame absolute bottom-0 left-24 w-44 p-2 shadow-[5px_7px_0_var(--sticker-shadow)]"
             style="transform: rotate(4deg)"
           >
             <img
@@ -288,21 +282,28 @@ const toggleFaq = (i) => {
           </h2>
         </div>
 
-        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           <div
             v-for="(f, i) in features"
             :key="f.t"
-            class="reveal sticker p-7"
-            :class="[f.c, f.rd]"
+            class="torn-wrap pt-3"
             :style="`--rot: ${f.rot}`"
           >
-            <span class="font-hand text-4xl opacity-70">{{ String(i + 1).padStart(2, '0') }}</span>
-            <h3 class="mt-1 font-display text-xl font-bold">
-              {{ f.t }}
-            </h3>
-            <p class="mt-2 font-semibold opacity-90">
-              {{ f.d }}
-            </p>
+            <span class="masking-tape" />
+            <div
+              class="reveal torn-card p-7"
+              :class="[f.c, ['torn-a', 'torn-b', 'torn-c'][i % 3]]"
+            >
+              <div class="relative z-10">
+                <span class="font-hand text-4xl opacity-70">{{ String(i + 1).padStart(2, '0') }}</span>
+                <h3 class="mt-1 font-display text-xl font-bold">
+                  {{ f.t }}
+                </h3>
+                <p class="mt-2 font-semibold opacity-90">
+                  {{ f.d }}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -695,13 +696,22 @@ const toggleFaq = (i) => {
               ★★★★★
             </div>
           </div>
-          <NuxtLink
-            to="https://yandex.ru"
-            target="_blank"
-            class="font-hand mt-2 inline-block text-xl text-[#2a1a12]/70 underline decoration-wavy"
-          >
-            читать отзывы на Яндексе →
-          </NuxtLink>
+          <div class="mt-2 flex flex-col gap-1">
+            <NuxtLink
+              to="https://yandex.ru"
+              target="_blank"
+              class="font-hand inline-block text-xl text-[#2a1a12]/70 underline decoration-wavy"
+            >
+              читать отзывы на Яндексе →
+            </NuxtLink>
+            <NuxtLink
+              to="https://2gis.ru/ekaterinburg/search/AZ.art"
+              target="_blank"
+              class="font-hand inline-block text-xl text-[#2a1a12]/70 underline decoration-wavy"
+            >
+              читать отзывы на 2ГИС →
+            </NuxtLink>
+          </div>
         </div>
 
         <div class="relative min-h-[22rem]">
