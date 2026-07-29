@@ -1,84 +1,815 @@
 <script setup>
-const courses = [
-  { emoji: '🎨', title: 'Живопись', text: 'Масло, акрил, гуашь — от первого мазка до готовой картины.' },
-  { emoji: '✏️', title: 'Академический рисунок', text: 'Композиция, перспектива и светотень — база, на которой стоит всё.' },
-  { emoji: '💧', title: 'Акварель', text: 'Лёгкость и воздух: учимся управлять самой капризной краской.' },
-  { emoji: '🧒', title: 'Детская студия', text: 'Для детей от 6 лет: рисуем, играем и не боимся чистого листа.' }
+const phone = '+7 (993) 514-28-15'
+const phoneHref = 'tel:+79935142815'
+const tgHref = 'https://t.me/shkola_risovaniya_azart'
+const vkHref = 'https://vk.ru/shkola_risovaniya_azart'
+const mapHref = 'https://clck.ru/3USsL9'
+const address = 'проспект Ленина 49, Екатеринбург'
+const hours = '360 дней в году · 10:00–21:00'
+
+const features = [
+  { t: 'Мастерская с характером', d: 'Не класс, а место силы в самом центре города.', c: 's-sun', rot: '-2deg', rd: 'rd1' },
+  { t: 'От классики до цифры', d: 'Меняй направление под настроение — без потери прогресса.', c: 's-sky', rot: '1.5deg', rd: 'rd2' },
+  { t: 'Без догм и парадигм', d: 'Подстраиваем обучение под тебя: через метафоры или науку.', c: 's-lavender', rot: '-1deg', rd: 'rd4' },
+  { t: 'Тарифы под твой ритм', d: 'Плати только за тот объём, который реально осваиваешь.', c: 's-lime', rot: '2deg', rd: 'rd1' },
+  { t: 'Взрослые и дети с 10 лет', d: 'Новички и продвинутые, возможен семейный формат.', c: 's-fuchsia', rot: '-1.5deg', rd: 'rd2' },
+  { t: 'Открыты 360 дней в году', d: 'С 10:00 до 21:00 — приходи, когда удобно именно тебе.', c: 's-card', rot: '1deg', rd: 'rd4' }
 ]
+
+const directions = [
+  { emoji: '✏️', t: 'Академический рисунок', d: 'Композиция, перспектива и светотень — фундамент всего.', span: 'lg:col-span-7', c: 's-sky', rot: '-1.5deg' },
+  { emoji: '🎨', t: 'Живопись', d: 'Масло, гуашь и акварель — пишем цветом и настроением.', span: 'lg:col-span-5', c: 's-sun', rot: '2deg' },
+  { emoji: '💻', t: 'Цифровое искусство', d: 'Планшет, слои и кисти — современный рабочий процесс.', span: 'lg:col-span-4', c: 's-lavender', rot: '-1deg' },
+  { emoji: '🖌️', t: 'Акрил', d: 'Яркий укрывистый материал для смелых мазков и фактур.', span: 'lg:col-span-8', c: 's-lime', rot: '1deg' },
+  { emoji: '🖍️', t: 'Масляная пастель', d: 'Сочные штрихи ложатся как краска — без кисти и растворителей.', span: 'lg:col-span-5', c: 's-fuchsia', rot: '-2deg' },
+  { emoji: '🌸', t: 'Сухая пастель', d: 'Бархатистая растушёвка и пудровые переходы цвета.', span: 'lg:col-span-7', c: 's-card', rot: '1.5deg' },
+  { emoji: '🌿', t: 'Пленэры', d: 'Выходим на воздух ловить свет, погоду и живой мотив.', span: 'lg:col-span-6', c: 's-sky', rot: '1deg' },
+  { emoji: '🧒', t: 'Студия с 10 лет', d: 'Взрослые и дети, семейный формат обучения.', span: 'lg:col-span-6', c: 's-sun', rot: '-1.5deg' }
+]
+
+const events = {
+  emoji: '🎉',
+  t: 'Творческие мероприятия',
+  d: 'Арт-вечера, тематические мастер-классы и события — творим в компании, без оценок. Следи за афишей!'
+}
+
+const basics = {
+  badge: 'для тех, кто совсем с нуля',
+  t: 'Аzбука художника',
+  d: 'Базовый курс-фундамент. Собираем все основы в одну систему, чтобы потом уверенно идти в любую технику — от пастели до цифры.',
+  modules: ['Основы рисунка', 'Колористика', 'Перспектива', 'Натюрморт', 'Драпировка']
+}
+
+const courses = [
+  { emoji: '✏️', t: 'Академический рисунок', note: 'Постановка руки, форма и тон.' },
+  { emoji: '🎨', t: 'Живопись', note: 'Масло, гуашь и акварель.' },
+  { emoji: '💻', t: 'Цифровое искусство', note: 'Планшет и слои.' },
+  { emoji: '🖌️', t: 'Акрил', note: 'Плотный мазок и декор.' },
+  { emoji: '🖍️', t: 'Масляная пастель', note: 'Насыщенный цвет без кисти.' },
+  { emoji: '🌸', t: 'Сухая пастель', note: 'Пудровая растушёвка.' },
+  { emoji: '🌿', t: 'Пленэры', note: 'Рисуем на воздухе.' }
+]
+
+const steps = [
+  { n: '1', t: 'Запишись на пробное', d: 'Одно бесплатное занятие — в Telegram или по телефону, без предоплат.', c: 's-sun', rot: '-2deg' },
+  { n: '2', t: 'Познакомимся со школой', d: 'Покажем мастерскую, познакомим с преподавателями и расскажем про абонементы.', c: 's-sky', rot: '1.5deg' },
+  { n: '3', t: 'Выбери свой ритм', d: 'После пробного решаешь сам: абонемент, отдельный курс или «Аzбука».', c: 's-lime', rot: '-1deg' }
+]
+
+const plans = [
+  { tag: 'Лайт', emoji: '🌱', d: 'Для неспешного ритма и мягкого входа в практику.', perks: ['Свободный график занятий', 'Одна техника на выбор', 'Мольберты и материалы в студии'], c: 's-card', rot: '-1.5deg', accent: false },
+  { tag: 'Стандарт', emoji: '🔥', d: 'Регулярная практика и заметный рост из месяца в месяц.', perks: ['Стабильное расписание и прогресс', 'Все направления без потери роста', 'Участие в творческих мероприятиях', 'Разбор твоих работ'], c: 's-fuchsia', rot: '0deg', accent: true },
+  { tag: 'Премиум', emoji: '👑', d: 'Максимум погружения и внимания для быстрого результата.', perks: ['Приоритетное расписание', 'Все техники и пленэры', 'Персональные рекомендации', 'Закрытые события комьюнити'], c: 's-card', rot: '1.5deg', accent: false }
+]
+
+const impressions = [
+  'Пришла на пробное «просто посмотреть» — осталась на год.',
+  'Впервые за много лет почувствовала, что реально могу рисовать.',
+  'Ходим всей семьёй: я на пастель, дочка — в студию.'
+]
+
+const socials = [
+  { label: 'Telegram', handle: '@shkola_risovaniya_azart', href: tgHref, icon: 'i-simple-icons-telegram', c: 's-sky' },
+  { label: 'ВКонтакте', handle: 'vk.ru/shkola_risovaniya_azart', href: vkHref, icon: 'i-simple-icons-vk', c: 's-lavender' },
+  { label: 'MAX', handle: 'max.ru', href: null, icon: 'i-lucide-message-circle', c: 's-sun' },
+  { label: 'Отзывы', handle: 'Яндекс · пл. 1905 года', href: null, icon: 'i-lucide-star', c: 's-lime' }
+]
+
+const marquee = ['Рисуй без оглядки', 'AZ.art', 'Екатеринбург', 'проспект Ленина 49', '360 дней в году', 'с 10 до 21', 'масляная пастель', 'пленэры']
 </script>
 
 <template>
   <div>
-    <section class="relative overflow-hidden">
-      <div class="pointer-events-none absolute -top-32 -right-32 size-96 rounded-full bg-primary/15 blur-3xl" />
-      <div class="pointer-events-none absolute -bottom-40 -left-24 size-80 rounded-full bg-amber-300/20 blur-3xl" />
+    <section class="relative overflow-hidden bg-paper">
+      <div class="pointer-events-none absolute -top-24 -right-16 size-80 animate-drift rounded-full bg-fuchsia/20 blur-3xl" />
+      <div class="pointer-events-none absolute -bottom-32 -left-20 size-72 rounded-full bg-sun/25 blur-3xl" />
 
-      <div class="mx-auto grid max-w-5xl items-center gap-10 px-4 py-20 sm:py-28 md:grid-cols-[1.4fr_1fr]">
-        <div>
-          <p class="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
-            ✨ Набор открыт
-          </p>
-          <h1 class="font-display text-4xl leading-tight font-bold sm:text-5xl">
-            Научим рисовать <span class="text-primary">с нуля</span>
+      <div class="relative mx-auto grid max-w-6xl items-center gap-12 px-4 pt-16 pb-24 sm:pt-24 lg:grid-cols-12">
+        <div class="lg:col-span-7">
+          <span
+            class="rise sticker rd1 s-lime inline-flex items-center gap-2 px-4 py-2 text-sm font-extrabold"
+            style="--rot: -2deg"
+          >
+            <span class="relative flex size-2">
+              <span class="absolute inline-flex size-full animate-ping rounded-full bg-ink opacity-60" />
+              <span class="relative inline-flex size-2 rounded-full bg-ink" />
+            </span>
+            Екатеринбург · проспект Ленина 49
+          </span>
+
+          <h1
+            class="rise mt-7 puffy text-6xl sm:text-8xl"
+            style="animation-delay: 0.08s"
+          >
+            Рисуй
           </h1>
-          <p class="mt-5 max-w-md text-lg text-muted">
-            Школа рисования «Мазок»: небольшие группы, практикующие художники
-            и никакой скуки. Приходите на пробное занятие — это бесплатно.
+          <h1
+            class="rise mt-1 puffy pop-text text-6xl text-fuchsia sm:text-8xl"
+            style="animation-delay: 0.16s"
+          >
+            без оглядки!
+          </h1>
+
+          <p
+            class="rise mt-7 max-w-xl text-lg font-semibold text-inksoft"
+            style="animation-delay: 0.24s"
+          >
+            AZ.art — творческое комьюнити, где каждый взрослый, независимо от
+            уровня подготовки, открывает в себе художника, снимает стресс и
+            получает удовольствие от занятий.
           </p>
-          <div class="mt-8 flex flex-wrap gap-3">
-            <UButton to="#courses" size="xl" trailing-icon="i-lucide-arrow-down">
-              Выбрать направление
-            </UButton>
-            <UButton to="#trial" size="xl" color="neutral" variant="subtle">
-              Пробное занятие
-            </UButton>
+
+          <div
+            class="rise mt-9 flex flex-wrap gap-4"
+            style="animation-delay: 0.32s"
+          >
+            <NuxtLink
+              :to="tgHref"
+              target="_blank"
+              class="btn btn-fuchsia rd1"
+            >
+              <UIcon
+                name="i-simple-icons-telegram"
+                class="size-5"
+              />
+              Написать в Telegram
+            </NuxtLink>
+            <NuxtLink
+              :to="phoneHref"
+              class="btn btn-card rd2"
+            >
+              <UIcon
+                name="i-lucide-phone"
+                class="size-5"
+              />
+              {{ phone }}
+            </NuxtLink>
           </div>
         </div>
 
-        <div class="hidden select-none md:block" aria-hidden="true">
-          <div class="animate-float text-center text-[10rem] leading-none">🖌️</div>
-          <div class="mt-2 flex justify-center gap-6 text-5xl">
-            <span class="transition-transform duration-300 hover:-translate-y-2 hover:rotate-12">🎨</span>
-            <span class="transition-transform duration-300 hover:-translate-y-2 hover:-rotate-12">✏️</span>
-            <span class="transition-transform duration-300 hover:-translate-y-2 hover:rotate-12">🖼️</span>
+        <div
+          class="relative hidden h-[26rem] lg:col-span-5 lg:block"
+          aria-hidden="true"
+        >
+          <div
+            class="polaroid rd4 absolute top-2 left-4 w-44"
+            style="transform: rotate(-7deg)"
+          >
+            <div class="flex aspect-square items-center justify-center rounded-2xl bg-sky text-7xl">
+              🎨
+            </div>
+            <p class="mt-2 text-center font-hand text-2xl text-ink">
+              первый мазок
+            </p>
+          </div>
+          <div
+            class="polaroid rd4 absolute top-10 right-2 w-40 tape"
+            style="transform: rotate(6deg)"
+          >
+            <div class="flex aspect-square items-center justify-center rounded-2xl bg-lime text-7xl">
+              🖍️
+            </div>
+            <p class="mt-2 text-center font-hand text-2xl text-ink">
+              пастель
+            </p>
+          </div>
+          <div
+            class="polaroid rd4 absolute bottom-2 left-16 w-44"
+            style="transform: rotate(4deg)"
+          >
+            <div class="flex aspect-square items-center justify-center rounded-2xl bg-fuchsia text-7xl">
+              🌿
+            </div>
+            <p class="mt-2 text-center font-hand text-2xl text-ink">
+              пленэр
+            </p>
+          </div>
+
+          <span
+            class="sticker rd5 s-ink absolute -top-2 right-10 flex size-24 flex-col items-center justify-center text-center font-display text-xs font-bold leading-tight animate-float"
+            style="--rot: 12deg"
+          >
+            360<br>дней<br>в году
+          </span>
+          <span
+            class="absolute bottom-0 right-0 font-hand text-3xl text-fuchsia"
+            style="transform: rotate(-8deg)"
+          >с нуля — ок!</span>
+        </div>
+      </div>
+    </section>
+
+    <div
+      class="marquee-track relative z-10 -my-3 overflow-hidden border-y-2 border-ink bg-ink py-3"
+      style="transform: rotate(-1.2deg)"
+    >
+      <div class="flex w-max animate-marquee">
+        <div
+          v-for="group in 2"
+          :key="group"
+          class="flex shrink-0 items-center"
+        >
+          <span
+            v-for="(item, i) in marquee"
+            :key="i"
+            class="flex items-center font-display text-sm font-bold tracking-[0.18em] text-paper uppercase"
+          >
+            <span class="px-6">{{ item }}</span>
+            <span class="text-lime">✦</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <section class="relative bg-paper2 py-24 sm:py-28">
+      <div class="wave absolute -top-[55px] right-0 left-0 text-paper2">
+        <svg
+          viewBox="0 0 1200 60"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path
+            fill="currentColor"
+            d="M0,28 C200,60 400,0 600,30 C800,60 1000,8 1200,32 L1200,60 L0,60 Z"
+          />
+        </svg>
+      </div>
+
+      <div class="mx-auto max-w-6xl px-4">
+        <div class="mb-12 text-center">
+          <p class="font-hand text-3xl text-fuchsia">
+            почему именно мы?
+          </p>
+          <h2 class="mt-1 puffy text-4xl sm:text-6xl">
+            Место, где можно выдохнуть
+          </h2>
+        </div>
+
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div
+            v-for="(f, i) in features"
+            :key="f.t"
+            class="reveal sticker p-7"
+            :class="[f.c, f.rd]"
+            :style="`--rot: ${f.rot}`"
+          >
+            <span class="font-hand text-4xl opacity-70">{{ String(i + 1).padStart(2, '0') }}</span>
+            <h3 class="mt-1 font-display text-xl font-bold">
+              {{ f.t }}
+            </h3>
+            <p class="mt-2 font-semibold opacity-90">
+              {{ f.d }}
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <UPageSection id="courses" title="Направления" description="Чему учим в «Мазке»">
-      <div class="grid gap-4 sm:grid-cols-2">
-        <div
-          v-for="course in courses"
-          :key="course.title"
-          class="group rounded-xl border border-default bg-default/50 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-lg"
+    <section
+      id="directions"
+      class="relative bg-paper py-24 sm:py-28"
+    >
+      <div class="wave absolute -top-[55px] right-0 left-0 text-paper">
+        <svg
+          viewBox="0 0 1200 60"
+          preserveAspectRatio="none"
+          aria-hidden="true"
         >
-          <div class="text-4xl transition-transform duration-300 group-hover:scale-125 group-hover:-rotate-6">
-            {{ course.emoji }}
-          </div>
-          <h3 class="mt-4 text-lg font-bold">
-            {{ course.title }}
-          </h3>
-          <p class="mt-2 text-sm text-muted">
-            {{ course.text }}
+          <path
+            fill="currentColor"
+            d="M0,32 C150,4 350,56 600,24 C850,-4 1050,52 1200,26 L1200,60 L0,60 Z"
+          />
+        </svg>
+      </div>
+
+      <div class="mx-auto max-w-6xl px-4">
+        <div class="mb-12 flex flex-wrap items-end justify-between gap-4">
+          <h2 class="puffy text-5xl sm:text-7xl">
+            Направления
+          </h2>
+          <p class="max-w-sm font-hand text-2xl text-inksoft">
+            выбирай под настроение и меняй путь без потери прогресса ✏️
           </p>
         </div>
-      </div>
-    </UPageSection>
 
-    <UPageSection>
-      <UPageCTA
-        id="trial"
-        title="🖌️ Первое занятие — бесплатно"
-        description="Приходите познакомиться: покажем студию, подберём группу и нарисуем первую работу вместе."
-        variant="subtle"
-        :links="[{
-          label: 'Записаться',
-          to: 'mailto:hello@mazok.example',
-          trailingIcon: 'i-lucide-arrow-right',
-          color: 'neutral'
-        }]"
-      />
-    </UPageSection>
+        <div class="grid gap-6 lg:grid-cols-12">
+          <article
+            v-for="d in directions"
+            :key="d.t"
+            class="reveal sticker group p-7"
+            :class="[d.c, d.span]"
+            :style="`--rot: ${d.rot}`"
+          >
+            <div class="text-5xl transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110">
+              {{ d.emoji }}
+            </div>
+            <h3 class="mt-4 font-display text-2xl font-bold">
+              {{ d.t }}
+            </h3>
+            <p class="mt-2 max-w-md font-semibold opacity-90">
+              {{ d.d }}
+            </p>
+          </article>
+        </div>
+
+        <div
+          class="reveal sticker s-fuchsia tape mt-6 flex flex-col gap-5 p-8 sm:flex-row sm:items-center sm:justify-between"
+          style="--rot: -0.6deg"
+        >
+          <div class="flex items-center gap-4">
+            <span class="text-5xl group-hover-wiggle">{{ events.emoji }}</span>
+            <div>
+              <h3 class="font-display text-2xl font-bold sm:text-3xl">
+                {{ events.t }}
+              </h3>
+              <p class="mt-1 max-w-xl font-semibold text-white/90">
+                {{ events.d }}
+              </p>
+            </div>
+          </div>
+          <NuxtLink
+            :to="tgHref"
+            target="_blank"
+            class="btn btn-card rd1 shrink-0"
+          >
+            Узнать о ближайших
+            <UIcon
+              name="i-lucide-arrow-right"
+              class="size-4"
+            />
+          </NuxtLink>
+        </div>
+      </div>
+    </section>
+
+    <div class="bg-paper py-6 text-center">
+      <h2 class="puffy outline-text text-5xl sm:text-8xl">
+        выбери своё
+      </h2>
+    </div>
+
+    <section
+      id="courses"
+      class="relative bg-paper2 py-24 sm:py-28"
+    >
+      <div class="wave absolute -top-[55px] right-0 left-0 text-paper2">
+        <svg
+          viewBox="0 0 1200 60"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path
+            fill="currentColor"
+            d="M0,24 C200,56 400,4 600,32 C800,56 1000,8 1200,30 L1200,60 L0,60 Z"
+          />
+        </svg>
+      </div>
+
+      <div class="mx-auto max-w-6xl px-4">
+        <div
+          class="reveal sticker s-card tape relative overflow-hidden p-8 sm:p-12"
+          style="--rot: -0.5deg"
+        >
+          <span
+            class="sticker rd5 s-lime absolute -top-4 right-8 px-4 py-2 font-hand text-xl font-bold"
+            style="--rot: 6deg"
+          >{{ basics.badge }}</span>
+          <div class="grid gap-8 lg:grid-cols-[1fr_1.2fr] lg:items-center">
+            <div>
+              <p class="font-hand text-3xl text-fuchsia">
+                базовый курс
+              </p>
+              <h2 class="mt-1 puffy text-5xl sm:text-6xl">
+                {{ basics.t }}
+              </h2>
+              <p class="mt-4 max-w-md text-lg font-semibold text-inksoft">
+                {{ basics.d }}
+              </p>
+              <NuxtLink
+                :to="tgHref"
+                target="_blank"
+                class="btn btn-ink rd1 mt-6"
+              >
+                Начать с основ
+                <UIcon
+                  name="i-lucide-arrow-right"
+                  class="size-4"
+                />
+              </NuxtLink>
+            </div>
+            <div class="flex flex-wrap gap-3">
+              <span
+                v-for="(m, i) in basics.modules"
+                :key="m"
+                class="sticker px-5 py-3 font-display text-base font-bold"
+                :class="[i % 2 ? 's-sun rd2' : 's-sky rd1']"
+                :style="`--rot: ${i % 2 ? 2 : -2}deg`"
+              >
+                {{ m }}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-16 flex flex-wrap items-end justify-between gap-4">
+          <h3 class="puffy text-4xl sm:text-5xl">
+            Курсы по направлениям
+          </h3>
+          <p class="max-w-sm font-hand text-2xl text-inksoft">
+            хочешь пройти одно направление отдельно? легко 🎯
+          </p>
+        </div>
+
+        <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <article
+            v-for="(c, i) in courses"
+            :key="c.t"
+            class="reveal sticker s-card flex flex-col p-7"
+            :class="i % 2 ? 'rd2' : 'rd1'"
+            :style="`--rot: ${i % 3 === 0 ? -1 : i % 3 === 1 ? 1.5 : -0.5}deg`"
+          >
+            <div class="text-4xl">
+              {{ c.emoji }}
+            </div>
+            <h4 class="mt-3 font-display text-xl font-bold">
+              {{ c.t }}
+            </h4>
+            <p class="mt-1 font-semibold text-inksoft">
+              {{ c.note }}
+            </p>
+            <div class="mt-auto flex items-center justify-between pt-6">
+              <span class="font-hand text-2xl text-fuchsia">по запросу</span>
+              <NuxtLink
+                :to="tgHref"
+                target="_blank"
+                class="btn btn-fuchsia rd1 !px-4 !py-2 text-sm"
+              >
+                Подробнее
+              </NuxtLink>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="trial"
+      class="relative bg-paper py-24 sm:py-28"
+    >
+      <div class="wave absolute -top-[55px] right-0 left-0 text-paper">
+        <svg
+          viewBox="0 0 1200 60"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path
+            fill="currentColor"
+            d="M0,30 C150,2 350,58 600,26 C850,-2 1050,54 1200,28 L1200,60 L0,60 Z"
+          />
+        </svg>
+      </div>
+
+      <div class="mx-auto max-w-6xl px-4">
+        <div class="mb-10 max-w-2xl">
+          <p class="font-hand text-3xl text-fuchsia">
+            как это устроено
+          </p>
+          <h2 class="mt-1 puffy text-4xl sm:text-6xl">
+            Сначала знакомство,<br>потом — решение
+          </h2>
+        </div>
+
+        <div
+          class="reveal sticker s-sun mb-14 flex items-start gap-4 p-6"
+          style="--rot: -0.8deg"
+        >
+          <UIcon
+            name="i-lucide-coffee"
+            class="mt-1 size-7 shrink-0"
+          />
+          <p class="text-lg font-bold">
+            Пробное занятие бесплатное и ни к чему не обязывает. Никаких предоплат
+            и «только сегодня» — просто час творчества и честный разговор.
+          </p>
+        </div>
+
+        <div class="relative grid gap-8 md:grid-cols-3">
+          <div class="absolute top-10 right-12 left-12 hidden border-t-4 border-dashed border-ink/25 md:block" />
+          <div
+            v-for="s in steps"
+            :key="s.n"
+            class="reveal sticker relative p-7"
+            :class="[s.c, s.n === '2' ? 'rd2' : 'rd1']"
+            :style="`--rot: ${s.rot}`"
+          >
+            <span class="sticker rd5 s-ink flex size-14 items-center justify-center font-display text-2xl font-bold">{{ s.n }}</span>
+            <h3 class="mt-4 font-display text-xl font-bold">
+              {{ s.t }}
+            </h3>
+            <p class="mt-2 font-semibold opacity-90">
+              {{ s.d }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="plans"
+      class="relative bg-paper2 py-24 sm:py-28"
+    >
+      <div class="wave absolute -top-[55px] right-0 left-0 text-paper2">
+        <svg
+          viewBox="0 0 1200 60"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path
+            fill="currentColor"
+            d="M0,26 C200,58 400,2 600,30 C800,58 1000,6 1200,32 L1200,60 L0,60 Z"
+          />
+        </svg>
+      </div>
+
+      <div class="mx-auto max-w-6xl px-4">
+        <div class="mb-12 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p class="font-hand text-3xl text-fuchsia">
+              абонементы
+            </p>
+            <h2 class="mt-1 puffy text-5xl sm:text-7xl">
+              Выбери свой ритм
+            </h2>
+          </div>
+          <p class="max-w-sm font-hand text-2xl text-inksoft">
+            точную стоимость обсудим на пробном — подберём то, что подойдёт именно тебе 💛
+          </p>
+        </div>
+
+        <div class="grid items-stretch gap-7 lg:grid-cols-3">
+          <article
+            v-for="p in plans"
+            :key="p.tag"
+            class="reveal sticker flex flex-col p-8"
+            :class="[p.c, p.accent ? 'rd4 lg:-translate-y-5' : 'rd1']"
+            :style="`--rot: ${p.rot}`"
+          >
+            <span
+              v-if="p.accent"
+              class="sticker rd5 s-sun absolute -top-4 left-8 px-4 py-1 font-display text-xs font-bold"
+              style="--rot: -4deg"
+            >чаще выбирают</span>
+            <div class="flex items-center gap-3">
+              <span class="text-4xl group-hover-wiggle">{{ p.emoji }}</span>
+              <h3 class="font-display text-3xl font-bold">
+                {{ p.tag }}
+              </h3>
+            </div>
+            <p class="mt-3 font-semibold opacity-90">
+              {{ p.d }}
+            </p>
+            <ul class="mt-6 space-y-3">
+              <li
+                v-for="perk in p.perks"
+                :key="perk"
+                class="flex items-start gap-3 font-semibold"
+              >
+                <UIcon
+                  name="i-lucide-check"
+                  class="mt-1 size-4 shrink-0"
+                />
+                <span>{{ perk }}</span>
+              </li>
+            </ul>
+            <div class="mt-auto pt-8">
+              <div class="flex items-baseline gap-2">
+                <span class="puffy text-5xl">—</span>
+                <span class="font-hand text-2xl opacity-80">₽ по запросу</span>
+              </div>
+              <NuxtLink
+                :to="tgHref"
+                target="_blank"
+                class="btn rd1 mt-5 w-full justify-center"
+                :class="p.accent ? 'btn-card' : 'btn-ink'"
+              >
+                {{ p.accent ? 'Записаться на пробное' : 'Подробнее' }}
+              </NuxtLink>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="relative bg-paper py-24 sm:py-28">
+      <div class="wave absolute -top-[55px] right-0 left-0 text-paper">
+        <svg
+          viewBox="0 0 1200 60"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path
+            fill="currentColor"
+            d="M0,32 C150,4 350,56 600,24 C850,-4 1050,52 1200,26 L1200,60 L0,60 Z"
+          />
+        </svg>
+      </div>
+
+      <div class="mx-auto grid max-w-6xl gap-8 px-4 lg:grid-cols-2">
+        <div
+          class="reveal sticker s-sky p-8 sm:p-10"
+          style="--rot: -1deg"
+        >
+          <p class="font-hand text-3xl">
+            впечатления после пробного
+          </p>
+          <ul class="mt-5 space-y-5">
+            <li
+              v-for="im in impressions"
+              :key="im"
+              class="border-b-2 border-dashed border-ink/20 pb-4 text-lg font-bold last:border-0"
+            >
+              «{{ im }}»
+            </li>
+          </ul>
+          <div class="mt-6 flex items-center gap-3">
+            <span class="puffy text-5xl">5.0</span>
+            <div class="text-sun">
+              ★★★★★
+            </div>
+          </div>
+          <NuxtLink
+            to="https://yandex.ru"
+            target="_blank"
+            class="font-hand mt-2 inline-block text-xl text-ink/70 underline decoration-wavy"
+          >
+            читать отзывы на Яндексе →
+          </NuxtLink>
+        </div>
+
+        <div class="relative min-h-[22rem]">
+          <div
+            class="polaroid rd4 absolute top-0 left-4 w-52"
+            style="transform: rotate(-5deg)"
+          >
+            <div class="flex aspect-square items-center justify-center rounded-2xl bg-lavender text-7xl">
+              ️
+            </div>
+            <p class="mt-2 text-center font-hand text-2xl text-ink">
+              моя первая работа
+            </p>
+          </div>
+          <div
+            class="polaroid rd4 absolute top-12 right-2 w-48 tape"
+            style="transform: rotate(7deg)"
+          >
+            <div class="flex aspect-square items-center justify-center rounded-2xl bg-sun text-7xl">
+              🎨
+            </div>
+            <p class="mt-2 text-center font-hand text-2xl text-ink">
+              акварельный вечер
+            </p>
+          </div>
+          <span
+            class="sticker rd5 s-fuchsia absolute bottom-2 left-10 flex size-24 flex-col items-center justify-center text-center font-display text-sm font-bold leading-tight animate-float"
+            style="--rot: -10deg"
+          >
+            рейтинг<br>5.0
+          </span>
+          <span
+            class="absolute right-6 bottom-6 font-hand text-3xl text-fuchsia"
+            style="transform: rotate(-6deg)"
+          >приходи рисовать!</span>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="contacts"
+      class="relative bg-paper2 py-24 sm:py-28"
+    >
+      <div class="wave absolute -top-[55px] right-0 left-0 text-paper2">
+        <svg
+          viewBox="0 0 1200 60"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path
+            fill="currentColor"
+            d="M0,24 C200,56 400,4 600,32 C800,56 1000,8 1200,30 L1200,60 L0,60 Z"
+          />
+        </svg>
+      </div>
+
+      <div class="mx-auto max-w-6xl px-4">
+        <div class="grid gap-12 lg:grid-cols-2">
+          <div>
+            <h2 class="puffy text-5xl sm:text-7xl">
+              Приходи<br>рисовать!
+            </h2>
+            <p class="mt-5 max-w-md text-lg font-semibold text-inksoft">
+              Покажем мастерскую, подберём направление и ритм — и ты нарисуешь
+              первую работу уже на знакомстве.
+            </p>
+            <div class="mt-8 flex flex-wrap gap-4">
+              <NuxtLink
+                :to="tgHref"
+                target="_blank"
+                class="btn btn-fuchsia rd1"
+              >
+                <UIcon
+                  name="i-simple-icons-telegram"
+                  class="size-5"
+                />
+                Записаться
+              </NuxtLink>
+              <NuxtLink
+                :to="phoneHref"
+                class="btn btn-ink rd2"
+              >
+                <UIcon
+                  name="i-lucide-phone"
+                  class="size-5"
+                />
+                Позвонить
+              </NuxtLink>
+            </div>
+          </div>
+
+          <div class="grid gap-5 sm:grid-cols-2">
+            <NuxtLink
+              :to="mapHref"
+              target="_blank"
+              class="reveal sticker s-card p-6"
+              style="--rot: -1.5deg"
+            >
+              <UIcon
+                name="i-lucide-map-pin"
+                class="size-6 text-fuchsia"
+              />
+              <p class="mt-2 font-hand text-xl text-inksoft">адрес</p>
+              <p class="font-display text-lg font-bold">{{ address }}</p>
+            </NuxtLink>
+            <NuxtLink
+              :to="phoneHref"
+              class="reveal sticker s-card p-6"
+              style="--rot: 1.5deg"
+            >
+              <UIcon
+                name="i-lucide-phone"
+                class="size-6 text-fuchsia"
+              />
+              <p class="mt-2 font-hand text-xl text-inksoft">телефон</p>
+              <p class="font-display text-lg font-bold">{{ phone }}</p>
+            </NuxtLink>
+            <NuxtLink
+              :to="tgHref"
+              target="_blank"
+              class="reveal sticker s-card p-6"
+              style="--rot: 1deg"
+            >
+              <UIcon
+                name="i-simple-icons-telegram"
+                class="size-6 text-fuchsia"
+              />
+              <p class="mt-2 font-hand text-xl text-inksoft">telegram</p>
+              <p class="font-display text-base font-bold">@shkola_risovaniya_azart</p>
+            </NuxtLink>
+            <div
+              class="reveal sticker s-card p-6"
+              style="--rot: -1deg"
+            >
+              <UIcon
+                name="i-lucide-clock"
+                class="size-6 text-fuchsia"
+              />
+              <p class="mt-2 font-hand text-xl text-inksoft">
+                часы работы
+              </p>
+              <p class="font-display text-base font-bold">
+                {{ hours }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 flex flex-wrap gap-4">
+          <component
+            :is="s.href ? 'NuxtLink' : 'div'"
+            v-for="s in socials"
+            :key="s.label"
+            :to="s.href"
+            :target="s.href ? '_blank' : undefined"
+            class="reveal sticker flex items-center gap-3 px-5 py-3"
+            :class="[s.c, 'rd1']"
+          >
+            <UIcon
+              :name="s.icon"
+              class="size-5"
+            />
+            <span class="font-display text-sm font-bold">{{ s.label }}</span>
+          </component>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
