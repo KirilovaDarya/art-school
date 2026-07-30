@@ -223,13 +223,13 @@ onMounted(() => {
           </span>
 
           <h1
-            class="rise mt-7 puffy text-6xl sm:text-8xl"
+            class="rise mt-7 puffy text-7xl sm:text-8xl"
             style="animation-delay: 0.08s"
           >
             Рисуй
           </h1>
           <h1
-            class="rise chalk-hand mt-2 text-fuchsia text-6xl sm:text-7xl lg:text-8xl"
+            class="rise chalk-hand mt-2 text-fuchsia text-7xl lg:text-8xl"
             style="animation-delay: 0.16s"
           >
             без оглядки!
@@ -451,14 +451,14 @@ onMounted(() => {
           <article
             v-for="d in directions"
             :key="d.t"
-            class="reveal sticker group w-[82%] shrink-0 snap-center p-7 sm:w-[55%] lg:w-auto"
+            class="reveal sticker group w-[85%] shrink-0 snap-center p-7 sm:w-[55%] lg:w-auto"
             :class="[d.c, d.span]"
             :style="`--rot: ${d.rot}`"
           >
             <div class="text-4xl transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-105 sm:text-5xl">
               {{ d.emoji }}
             </div>
-            <h3 class="mt-4 font-display text-2xl font-bold">
+            <h3 class="mt-4 font-display text-xl font-bold break-words sm:text-2xl">
               {{ d.t }}
             </h3>
             <p class="mt-2 max-w-md font-semibold opacity-90">
@@ -482,7 +482,7 @@ onMounted(() => {
           class="reveal sticker s-fuchsia tape mt-6 flex flex-col gap-5 p-8 sm:flex-row sm:items-center sm:justify-between"
           style="--rot: -0.6deg"
         >
-          <div class="flex items-center gap-4">
+          <div class="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-4">
             <span class="text-5xl group-hover-wiggle">{{ events.emoji }}</span>
             <div>
               <h3 class="font-display text-2xl font-bold sm:text-3xl">
@@ -710,7 +710,7 @@ onMounted(() => {
             <div class="text-4xl">
               {{ c.emoji }}
             </div>
-            <h4 class="mt-3 font-display text-lg font-bold break-words sm:text-xl">
+            <h4 class="mt-3 font-display text-base font-bold break-words sm:text-xl">
               {{ c.t }}
             </h4>
             <p class="mt-1 font-semibold text-inksoft">

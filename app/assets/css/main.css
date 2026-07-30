@@ -132,6 +132,9 @@ body::before {
       -0.02em 0 0 var(--sketch), 0.02em 0 0 var(--sketch),
       0 -0.02em 0 var(--sketch), 0 0.02em 0 var(--sketch);
   }
+  .chalk-hand {
+    line-height: 1.15;
+  }
 }
 
 .pop-text {
