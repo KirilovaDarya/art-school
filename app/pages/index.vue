@@ -273,17 +273,17 @@ onMounted(() => {
         </div>
 
         <div
-          class="relative hidden h-[30rem] lg:col-span-5 lg:block"
+          class="relative h-[24rem] sm:h-[26rem] lg:h-[30rem] lg:col-span-5"
           aria-hidden="true"
         >
           <img
             src="/chair-sticker.png?v=2"
             alt=""
-            class="sticker-shadow pointer-events-none absolute -right-4 bottom-0 h-[28rem] w-auto select-none"
+            class="sticker-shadow pointer-events-none absolute -right-4 bottom-0 h-[18rem] w-auto select-none sm:h-[22rem] lg:h-[28rem]"
             style="--rot: 3deg"
           >
           <div
-            class="sheet marker-frame absolute top-4 -left-8 w-40 animate-float-b p-2 shadow-[5px_7px_0_var(--sticker-shadow)]"
+            class="sheet marker-frame absolute top-2 -left-2 w-32 animate-float-b p-2 shadow-[5px_7px_0_var(--sticker-shadow)] sm:top-4 sm:-left-4 sm:w-36 lg:-left-8 lg:w-40"
             style="--rot: 6deg"
           >
             <div class="aspect-[4/5] w-full overflow-hidden rounded-[3px]">
@@ -295,11 +295,11 @@ onMounted(() => {
             </div>
           </div>
           <span
-            class="sticker-text absolute top-60 -right-8 max-w-[9rem] text-right text-4xl animate-float-d"
+            class="sticker-text absolute top-40 -right-2 max-w-[8rem] text-right text-3xl animate-float-d sm:top-48 sm:-right-4 sm:max-w-[9rem] sm:text-4xl lg:top-60 lg:-right-8"
             style="--rot: -7deg"
           >здесь не ставят оценок ✨</span>
           <div
-            class="sheet marker-frame absolute bottom-0 left-2 w-44 animate-float-c p-2 shadow-[5px_7px_0_var(--sticker-shadow)]"
+            class="sheet marker-frame absolute bottom-0 left-2 w-36 animate-float-c p-2 shadow-[5px_7px_0_var(--sticker-shadow)] sm:w-40 lg:w-44"
             style="--rot: 4deg"
           >
             <img
