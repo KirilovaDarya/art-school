@@ -229,10 +229,20 @@ onMounted(() => {
             Рисуй
           </h1>
           <h1
-            class="rise chalk-hand mt-2 text-fuchsia text-7xl lg:text-8xl xl:text-9xl"
+            class="rise chalk-hand relative mt-2 inline-block text-fuchsia text-7xl lg:text-8xl"
             style="animation-delay: 0.16s"
           >
             без оглядки!
+            <span
+              class="sheet marker-frame absolute -right-2 -bottom-10 block w-28 p-1.5 shadow-[5px_7px_0_var(--sticker-shadow)] sm:-right-4 sm:w-32 lg:hidden"
+              style="--rot: -6deg"
+            >
+              <img
+                src="/pastel.jpg?v=2"
+                alt="Пастельный этюд: синие цветы на оранжевом фоне"
+                class="aspect-[4/5] w-full rounded-[3px] object-cover"
+              >
+            </span>
           </h1>
 
           <p
@@ -273,7 +283,7 @@ onMounted(() => {
         </div>
 
         <div
-          class="relative h-[24rem] sm:h-[26rem] lg:h-[30rem] lg:col-span-5"
+          class="relative hidden h-[30rem] lg:col-span-5 lg:block"
           aria-hidden="true"
         >
           <img
@@ -633,12 +643,10 @@ onMounted(() => {
           class="reveal sticker s-card tape tape-wide relative p-8 sm:p-12"
           style="--rot: -0.5deg"
         >
-          <div class="absolute inset-x-0 -top-4 flex justify-center sm:inset-x-auto sm:right-8">
-            <span
-              class="sticker rd5 s-lime px-4 py-2 font-hand text-xl font-bold"
-              style="--rot: 6deg"
-            >{{ basics.badge }}</span>
-          </div>
+          <span
+            class="pastel-badge absolute -top-5 right-2 z-10 px-5 py-2.5 font-hand text-xl font-bold sm:right-6"
+            style="--rot: 7deg"
+          >{{ basics.badge }}</span>
           <div class="grid gap-8 lg:grid-cols-[1fr_1.2fr_auto] lg:items-center">
             <div>
               <p class="font-hand text-3xl text-fuchsia">
@@ -850,8 +858,8 @@ onMounted(() => {
               style="--rot: -4deg"
             >чаще выбирают</span>
             <div class="flex items-center gap-3">
-              <span class="text-4xl group-hover-wiggle">{{ p.emoji }}</span>
-              <h3 class="font-display text-3xl font-bold">
+              <span class="text-3xl group-hover-wiggle sm:text-4xl">{{ p.emoji }}</span>
+              <h3 class="font-display text-2xl font-bold sm:text-3xl">
                 {{ p.tag }}
               </h3>
             </div>

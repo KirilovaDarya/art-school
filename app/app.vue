@@ -34,6 +34,7 @@ const nav = [
 ]
 
 const menuOpen = ref(false)
+const colorMode = useColorMode()
 </script>
 
 <template>
@@ -90,7 +91,17 @@ const menuOpen = ref(false)
             />
             Записаться
           </NuxtLink>
-          <UColorModeButton class="theme-toggle sticker rd5 s-card !size-10" />
+          <button
+            type="button"
+            class="theme-toggle group sticker rd5 s-card !size-10"
+            :aria-label="colorMode.value === 'dark' ? 'Включить светлую тему' : 'Включить тёмную тему'"
+            @click="colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'"
+          >
+            <UIcon
+              :name="colorMode.value === 'dark' ? 'i-lucide-moon' : 'i-lucide-sun'"
+              class="size-5 transition-transform duration-300 group-hover:rotate-45"
+            />
+          </button>
 
           <div
             v-if="menuOpen"
