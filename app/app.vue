@@ -90,7 +90,7 @@ const menuOpen = ref(false)
             />
             Записаться
           </NuxtLink>
-          <UColorModeButton class="sticker rd5 s-card !size-10" />
+          <UColorModeButton class="theme-toggle sticker rd5 s-card !size-10" />
 
           <div
             v-if="menuOpen"

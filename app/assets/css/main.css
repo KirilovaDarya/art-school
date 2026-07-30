@@ -54,6 +54,34 @@ html {
   scroll-behavior: smooth;
 }
 
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.is-dragging {
+  cursor: grabbing;
+  user-select: none;
+  scroll-snap-type: none;
+}
+.is-dragging .sticker {
+  transition: none;
+}
+
+.theme-toggle {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.theme-toggle > * {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 section[id] {
   scroll-margin-top: 5.5rem;
 }
@@ -91,10 +119,19 @@ body::before {
   color: transparent;
   letter-spacing: 0.01em;
   text-shadow:
-    -2px 0 0 var(--sketch), 2px 0 0 var(--sketch),
-    0 -2px 0 var(--sketch), 0 2px 0 var(--sketch),
-    -1px -1px 0 var(--sketch), 1px -1px 0 var(--sketch),
-    -1px 1px 0 var(--sketch), 1px 1px 0 var(--sketch);
+    -0.03em 0 0 var(--sketch), 0.03em 0 0 var(--sketch),
+    0 -0.03em 0 var(--sketch), 0 0.03em 0 var(--sketch),
+    -0.015em -0.015em 0 var(--sketch), 0.015em -0.015em 0 var(--sketch),
+    -0.015em 0.015em 0 var(--sketch), 0.015em 0.015em 0 var(--sketch);
+}
+
+@media (max-width: 639px) {
+  .outline-text {
+    font-weight: 600;
+    text-shadow:
+      -0.02em 0 0 var(--sketch), 0.02em 0 0 var(--sketch),
+      0 -0.02em 0 var(--sketch), 0 0.02em 0 var(--sketch);
+  }
 }
 
 .pop-text {

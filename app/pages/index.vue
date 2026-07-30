@@ -111,6 +111,77 @@ const openFaq = ref(null)
 const toggleFaq = (i) => {
   openFaq.value = openFaq.value === i ? null : i
 }
+
+const dirScroll = ref(null)
+const dirActive = ref(0)
+const courseScroll = ref(null)
+const courseActive = ref(0)
+const planScroll = ref(null)
+const planActive = ref(0)
+
+const readActive = (scroller, active) => {
+  const c = scroller.value
+  if (!c) return
+  const center = c.scrollLeft + c.clientWidth / 2
+  let best = 0
+  let bestDist = Infinity
+  Array.from(c.children).forEach((child, i) => {
+    const d = Math.abs(child.offsetLeft + child.clientWidth / 2 - center)
+    if (d < bestDist) {
+      bestDist = d
+      best = i
+    }
+  })
+  active.value = best
+}
+
+const slideTo = (scroller, i) => {
+  const c = scroller.value
+  const child = c?.children[i]
+  if (!c || !child) return
+  c.scrollTo({ left: child.offsetLeft - (c.clientWidth - child.clientWidth) / 2, behavior: 'smooth' })
+}
+
+const enableDrag = (scroller, active) => {
+  const el = scroller.value
+  if (!el) return
+  let down = false
+  let moved = false
+  let startX = 0
+  let startLeft = 0
+  el.addEventListener('mousedown', (e) => {
+    down = true
+    moved = false
+    startX = e.clientX
+    startLeft = el.scrollLeft
+    el.classList.add('is-dragging')
+  })
+  window.addEventListener('mousemove', (e) => {
+    if (!down) return
+    const dx = e.clientX - startX
+    if (Math.abs(dx) > 5) moved = true
+    el.scrollLeft = startLeft - dx
+  })
+  window.addEventListener('mouseup', () => {
+    if (!down) return
+    down = false
+    el.classList.remove('is-dragging')
+    readActive(scroller, active)
+    slideTo(scroller, active.value)
+  })
+  el.addEventListener('click', (e) => {
+    if (moved) {
+      e.preventDefault()
+      e.stopPropagation()
+    }
+  }, true)
+}
+
+onMounted(() => {
+  enableDrag(dirScroll, dirActive)
+  enableDrag(courseScroll, courseActive)
+  enableDrag(planScroll, planActive)
+})
 </script>
 
 <template>
@@ -158,7 +229,7 @@ const toggleFaq = (i) => {
             Рисуй
           </h1>
           <h1
-            class="rise chalk-hand mt-2 text-fuchsia text-7xl sm:text-9xl"
+            class="rise chalk-hand mt-2 text-fuchsia text-6xl sm:text-7xl lg:text-8xl"
             style="animation-delay: 0.16s"
           >
             без оглядки!
@@ -271,7 +342,7 @@ const toggleFaq = (i) => {
           <p class="font-hand text-3xl text-fuchsia">
             почему именно мы?
           </p>
-          <h2 class="mt-1 puffy text-4xl sm:text-6xl">
+          <h2 class="mt-1 puffy text-3xl sm:text-6xl">
             Место, где можно <span class="marker-lime">выдохнуть</span>
           </h2>
         </div>
@@ -364,7 +435,7 @@ const toggleFaq = (i) => {
 
       <div class="relative mx-auto max-w-6xl px-4">
         <div class="mb-12 flex flex-wrap items-end justify-between gap-4">
-          <h2 class="puffy text-5xl sm:text-7xl">
+          <h2 class="puffy text-3xl sm:text-6xl">
             Направления
           </h2>
           <p class="max-w-sm font-hand text-2xl text-inksoft">
@@ -372,15 +443,19 @@ const toggleFaq = (i) => {
           </p>
         </div>
 
-        <div class="grid gap-6 lg:grid-cols-12">
+        <div
+          ref="dirScroll"
+          class="no-scrollbar relative -mx-4 flex cursor-grab snap-x snap-mandatory gap-6 overflow-x-auto px-4 pb-2 lg:mx-0 lg:grid lg:cursor-default lg:grid-cols-12 lg:overflow-visible lg:px-0"
+          @scroll="readActive(dirScroll, dirActive)"
+        >
           <article
             v-for="d in directions"
             :key="d.t"
-            class="reveal sticker group p-7"
+            class="reveal sticker group w-[82%] shrink-0 snap-center p-7 sm:w-[55%] lg:w-auto"
             :class="[d.c, d.span]"
             :style="`--rot: ${d.rot}`"
           >
-            <div class="text-5xl transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-105">
+            <div class="text-4xl transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-105 sm:text-5xl">
               {{ d.emoji }}
             </div>
             <h3 class="mt-4 font-display text-2xl font-bold">
@@ -390,6 +465,17 @@ const toggleFaq = (i) => {
               {{ d.d }}
             </p>
           </article>
+        </div>
+        <div class="mt-6 flex justify-center gap-2 lg:hidden">
+          <button
+            v-for="(d, i) in directions"
+            :key="d.t"
+            type="button"
+            class="h-2.5 rounded-full transition-all duration-300"
+            :class="dirActive === i ? 'w-7 bg-fuchsia' : 'w-2.5 bg-ink/25 hover:bg-ink/50'"
+            :aria-label="`Направление ${i + 1}`"
+            @click="slideTo(dirScroll, i)"
+          />
         </div>
 
         <div
@@ -449,7 +535,7 @@ const toggleFaq = (i) => {
             <p class="font-hand text-3xl text-fuchsia">
               темы занятий на неделю
             </p>
-            <h2 class="mt-1 puffy text-5xl sm:text-7xl">
+            <h2 class="mt-1 puffy text-3xl sm:text-6xl">
               Расписание
             </h2>
             <p class="mt-4 max-w-md text-lg font-semibold text-inksoft">
@@ -470,14 +556,16 @@ const toggleFaq = (i) => {
           class="reveal sticker s-card tape group p-4 sm:p-6"
           style="--rot: -0.4deg"
         >
-          <summary class="flex cursor-pointer items-center justify-between gap-4 px-2 py-1 select-none [&::-webkit-details-marker]:hidden">
-            <span class="flex items-center gap-3 font-display text-lg font-bold sm:text-2xl">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-2 py-1 select-none [&::-webkit-details-marker]:hidden">
+            <span class="flex items-center gap-3 font-display text-base font-bold sm:text-2xl">
               <span class="text-3xl group-hover-wiggle">📄</span>
               Темы занятий · Дом печати · {{ schedule.dates }}
             </span>
             <span class="flex shrink-0 items-center gap-2 font-hand text-2xl text-fuchsia">
-              <span class="group-open:hidden">показать</span>
-              <span class="hidden group-open:inline">скрыть</span>
+              <span class="hidden sm:inline">
+                <span class="group-open:hidden">показать</span>
+                <span class="hidden group-open:inline">скрыть</span>
+              </span>
               <UIcon
                 name="i-lucide-chevron-down"
                 class="size-6 transition-transform duration-300 group-open:rotate-180"
@@ -529,7 +617,7 @@ const toggleFaq = (i) => {
       <p class="font-hand text-2xl text-inksoft">
         листай дальше ↓
       </p>
-      <h2 class="puffy outline-text mt-1 text-5xl sm:text-8xl">
+      <h2 class="puffy outline-text mt-5 text-4xl sm:mt-1 sm:text-8xl">
         выбери своё
       </h2>
     </div>
@@ -542,7 +630,7 @@ const toggleFaq = (i) => {
 
       <div class="relative mx-auto max-w-6xl px-4">
         <div
-          class="reveal sticker s-card tape relative overflow-hidden p-8 sm:p-12"
+          class="reveal sticker s-card tape tape-wide relative p-8 sm:p-12"
           style="--rot: -0.5deg"
         >
           <span
@@ -554,7 +642,7 @@ const toggleFaq = (i) => {
               <p class="font-hand text-3xl text-fuchsia">
                 базовый курс
               </p>
-              <h2 class="mt-1 puffy text-5xl sm:text-6xl">
+              <h2 class="mt-1 puffy text-3xl sm:text-6xl">
                 {{ basics.t }}
               </h2>
               <p class="mt-4 max-w-md text-lg font-semibold text-inksoft">
@@ -599,7 +687,7 @@ const toggleFaq = (i) => {
         </div>
 
         <div class="mt-16 flex flex-wrap items-end justify-between gap-4">
-          <h3 class="puffy text-4xl sm:text-5xl">
+          <h3 class="puffy text-3xl sm:text-6xl">
             Курсы по направлениям
           </h3>
           <p class="max-w-sm font-hand text-2xl text-inksoft">
@@ -607,18 +695,22 @@ const toggleFaq = (i) => {
           </p>
         </div>
 
-        <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div
+          ref="courseScroll"
+          class="no-scrollbar relative -mx-4 mt-8 flex cursor-grab snap-x snap-mandatory gap-6 overflow-x-auto px-4 pb-2 sm:mx-0 sm:grid sm:cursor-default sm:grid-cols-2 sm:overflow-visible sm:px-0 lg:grid-cols-3"
+          @scroll="readActive(courseScroll, courseActive)"
+        >
           <article
             v-for="(c, i) in courses"
             :key="c.t"
-            class="reveal sticker s-card flex flex-col p-7"
+            class="reveal sticker s-card flex w-[92%] shrink-0 snap-center flex-col p-7 sm:w-auto"
             :class="i % 2 ? 'rd2' : 'rd1'"
             :style="`--rot: ${i % 3 === 0 ? -1 : i % 3 === 1 ? 1.5 : -0.5}deg`"
           >
             <div class="text-4xl">
               {{ c.emoji }}
             </div>
-            <h4 class="mt-3 font-display text-xl font-bold">
+            <h4 class="mt-3 font-display text-lg font-bold break-words sm:text-xl">
               {{ c.t }}
             </h4>
             <p class="mt-1 font-semibold text-inksoft">
@@ -636,6 +728,17 @@ const toggleFaq = (i) => {
             </div>
           </article>
         </div>
+        <div class="mt-6 flex justify-center gap-2 sm:hidden">
+          <button
+            v-for="(c, i) in courses"
+            :key="c.t"
+            type="button"
+            class="h-2.5 rounded-full transition-all duration-300"
+            :class="courseActive === i ? 'w-7 bg-fuchsia' : 'w-2.5 bg-ink/25 hover:bg-ink/50'"
+            :aria-label="`Курс ${i + 1}`"
+            @click="slideTo(courseScroll, i)"
+          />
+        </div>
       </div>
     </section>
 
@@ -650,7 +753,7 @@ const toggleFaq = (i) => {
           <p class="font-hand text-3xl text-fuchsia">
             как это устроено
           </p>
-          <h2 class="mt-1 puffy text-4xl sm:text-6xl">
+          <h2 class="mt-1 puffy text-3xl sm:text-6xl">
             Сначала знакомство,<br>потом — решение
           </h2>
         </div>
@@ -718,7 +821,7 @@ const toggleFaq = (i) => {
             <p class="font-hand text-3xl text-fuchsia">
               абонементы
             </p>
-            <h2 class="mt-1 puffy text-5xl sm:text-7xl">
+            <h2 class="mt-1 puffy text-3xl sm:text-6xl">
               Выбери <span class="marker-sun">свой ритм</span>
             </h2>
           </div>
@@ -727,17 +830,21 @@ const toggleFaq = (i) => {
           </p>
         </div>
 
-        <div class="grid items-stretch gap-7 lg:grid-cols-3">
+        <div
+          ref="planScroll"
+          class="no-scrollbar relative -mx-4 flex cursor-grab snap-x snap-mandatory items-stretch gap-7 overflow-x-auto px-4 pt-5 pb-2 lg:mx-0 lg:grid lg:cursor-default lg:grid-cols-3 lg:overflow-visible lg:px-0 lg:pt-0"
+          @scroll="readActive(planScroll, planActive)"
+        >
           <article
             v-for="p in plans"
             :key="p.tag"
-            class="reveal sticker flex flex-col p-8"
+            class="reveal sticker flex w-[85%] shrink-0 snap-center flex-col p-8 sm:w-[60%] lg:w-auto"
             :class="[p.c, p.accent ? 'rd4 lg:-translate-y-5' : 'rd1']"
             :style="`--rot: ${p.rot}`"
           >
             <span
               v-if="p.accent"
-              class="sticker rd5 s-sun absolute -top-4 left-8 px-4 py-1 font-display text-xs font-bold"
+              class="sticker rd5 s-sun absolute -top-4 left-4 px-4 py-1 font-display text-sm font-bold"
               style="--rot: -4deg"
             >чаще выбирают</span>
             <div class="flex items-center gap-3">
@@ -777,6 +884,17 @@ const toggleFaq = (i) => {
               </NuxtLink>
             </div>
           </article>
+        </div>
+        <div class="mt-6 flex justify-center gap-2 lg:hidden">
+          <button
+            v-for="(p, i) in plans"
+            :key="p.tag"
+            type="button"
+            class="h-2.5 rounded-full transition-all duration-300"
+            :class="planActive === i ? 'w-7 bg-fuchsia' : 'w-2.5 bg-ink/25 hover:bg-ink/50'"
+            :aria-label="`Абонемент ${i + 1}`"
+            @click="slideTo(planScroll, i)"
+          />
         </div>
 
         <div
@@ -867,9 +985,9 @@ const toggleFaq = (i) => {
           </div>
         </div>
 
-        <div class="relative min-h-[24rem]">
+        <div class="relative min-h-[21rem] sm:min-h-[22rem] lg:min-h-[24rem]">
           <div
-            class="polaroid rd4 tape absolute top-0 left-4 w-72"
+            class="polaroid rd4 tape absolute top-0 left-2 w-40 sm:left-4 sm:w-56 lg:w-72"
             style="transform: rotate(-5deg)"
           >
             <img
@@ -879,7 +997,7 @@ const toggleFaq = (i) => {
             >
           </div>
           <div
-            class="polaroid rd4 tape absolute top-12 right-2 w-48"
+            class="polaroid rd4 tape absolute top-8 right-0 w-32 sm:top-12 sm:right-2 sm:w-40 lg:w-48"
             style="transform: rotate(7deg)"
           >
             <img
@@ -889,7 +1007,7 @@ const toggleFaq = (i) => {
             >
           </div>
           <div
-            class="polaroid rd4 tape absolute bottom-0 left-32 w-52"
+            class="polaroid rd4 tape absolute bottom-0 left-16 w-36 sm:left-40 sm:w-44 lg:left-32 lg:w-52"
             style="transform: rotate(4deg)"
           >
             <img
@@ -899,7 +1017,7 @@ const toggleFaq = (i) => {
             >
           </div>
           <span
-            class="sticker rd5 s-fuchsia absolute right-4 bottom-10 flex size-24 flex-col items-center justify-center text-center font-display text-sm font-bold leading-tight animate-float"
+            class="sticker rd5 s-fuchsia absolute right-2 bottom-8 flex size-20 flex-col items-center justify-center text-center font-display text-sm font-bold leading-tight animate-float sm:right-4 sm:bottom-10 sm:size-24"
             style="--rot: -10deg"
           >
             рейтинг<br>4.9
@@ -919,7 +1037,7 @@ const toggleFaq = (i) => {
           <p class="font-hand text-3xl text-fuchsia">
             остались вопросы?
           </p>
-          <h2 class="mt-1 puffy text-5xl sm:text-7xl">
+          <h2 class="mt-1 puffy text-3xl sm:text-6xl">
             Отвечаем <span class="marker-sky">честно</span>
           </h2>
           <p class="mt-5 max-w-sm text-lg font-semibold text-inksoft">
@@ -997,7 +1115,7 @@ const toggleFaq = (i) => {
           <p class="font-hand text-3xl text-fuchsia">
             мы ищем своих
           </p>
-          <h2 class="mt-1 puffy text-5xl sm:text-7xl">
+          <h2 class="mt-1 puffy text-3xl sm:text-6xl">
             Стань частью команды
           </h2>
         </div>
@@ -1012,7 +1130,7 @@ const toggleFaq = (i) => {
               style="--rot: 10deg"
             >🎨</span>
             <h3 class="puffy text-3xl sm:text-4xl">
-              Рисуешь сам —<br>научи других?
+              Рисуешь сам&nbsp;—<br>научи других?
             </h3>
             <p class="mt-4 text-lg font-semibold text-white/90">
               Если ты художник и тебе нравится делиться — у нас есть место. Мы не
@@ -1086,7 +1204,7 @@ const toggleFaq = (i) => {
       <div class="relative mx-auto max-w-6xl px-4">
         <div class="grid gap-12 lg:grid-cols-2">
           <div>
-            <h2 class="puffy text-5xl sm:text-7xl">
+            <h2 class="puffy text-4xl sm:text-7xl">
               Приходи<br>рисовать!
             </h2>
             <p class="mt-5 max-w-md text-lg font-semibold text-inksoft">
