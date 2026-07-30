@@ -633,10 +633,12 @@ onMounted(() => {
           class="reveal sticker s-card tape tape-wide relative p-8 sm:p-12"
           style="--rot: -0.5deg"
         >
-          <span
-            class="sticker rd5 s-lime absolute -top-4 right-8 px-4 py-2 font-hand text-xl font-bold"
-            style="--rot: 6deg"
-          >{{ basics.badge }}</span>
+          <div class="absolute inset-x-0 -top-4 flex justify-center sm:inset-x-auto sm:right-8">
+            <span
+              class="sticker rd5 s-lime px-4 py-2 font-hand text-xl font-bold"
+              style="--rot: 6deg"
+            >{{ basics.badge }}</span>
+          </div>
           <div class="grid gap-8 lg:grid-cols-[1fr_1.2fr_auto] lg:items-center">
             <div>
               <p class="font-hand text-3xl text-fuchsia">
