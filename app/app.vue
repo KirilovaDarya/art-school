@@ -79,7 +79,7 @@ const menuOpen = ref(false)
           </button>
 
           <NuxtLink
-            to="https://t.me/shkola_risovaniya_azart"
+            to="https://t.me/azart_ekb"
             target="_blank"
             class="btn btn-fuchsia rd1 hidden text-sm sm:inline-flex"
           >
@@ -107,7 +107,7 @@ const menuOpen = ref(false)
               {{ item.label }}
             </NuxtLink>
             <NuxtLink
-              to="https://t.me/shkola_risovaniya_azart"
+              to="https://t.me/azart_ekb"
               target="_blank"
               class="btn btn-fuchsia rd1 mt-2 w-full justify-center text-base"
               @click="menuOpen = false"
@@ -159,11 +159,11 @@ const menuOpen = ref(false)
               +7 (993) 514-28-15
             </NuxtLink>
             <NuxtLink
-              to="https://t.me/shkola_risovaniya_azart"
+              to="https://t.me/azart_ekb"
               target="_blank"
               class="text-paper/70 transition-colors hover:text-lime"
             >
-              @shkola_risovaniya_azart
+              @azart_ekb
             </NuxtLink>
             <NuxtLink
               to="https://vk.ru/shkola_risovaniya_azart"

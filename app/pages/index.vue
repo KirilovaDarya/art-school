@@ -1,9 +1,11 @@
 <script setup>
 const phone = '+7 (993) 514-28-15'
 const phoneHref = 'tel:+79935142815'
-const tgHref = 'https://t.me/shkola_risovaniya_azart'
+const tgHref = 'https://t.me/azart_ekb'
 const vkHref = 'https://vk.ru/shkola_risovaniya_azart'
 const mapHref = 'https://clck.ru/3USsL9'
+const yandexHref = 'https://yandex.ru/maps/org/azart/56240254129/reviews/?add-review=true'
+const dgisHref = 'https://2gis.ru/ekaterinburg/search/azart/firm/70000001089436167/60.614748%2C56.839963/tab/reviews'
 const address = 'проспект Ленина 49, Екатеринбург'
 const hours = '360 дней в году · 10:00–21:00'
 
@@ -21,8 +23,6 @@ const directions = [
   { emoji: '🎨', t: 'Живопись', d: 'Масло, гуашь и акварель — пишем цветом и настроением.', span: 'lg:col-span-5', c: 's-sun', rot: '2deg' },
   { emoji: '💻', t: 'Цифровое искусство', d: 'Планшет, слои и кисти — современный рабочий процесс.', span: 'lg:col-span-4', c: 's-lavender', rot: '-1deg' },
   { emoji: '🖌️', t: 'Акрил', d: 'Яркий укрывистый материал для смелых мазков и фактур.', span: 'lg:col-span-8', c: 's-lime', rot: '1deg' },
-  { emoji: '🖍️', t: 'Масляная пастель', d: 'Сочные штрихи ложатся как краска — без кисти и растворителей.', span: 'lg:col-span-5', c: 's-fuchsia', rot: '-2deg' },
-  { emoji: '🌸', t: 'Сухая пастель', d: 'Бархатистая растушёвка и пудровые переходы цвета.', span: 'lg:col-span-7', c: 's-card', rot: '1.5deg' },
   { emoji: '🌿', t: 'Пленэры', d: 'Выходим на воздух ловить свет, погоду и живой мотив.', span: 'lg:col-span-6', c: 's-sky', rot: '1deg' },
   { emoji: '🎓', t: 'Взрослым и абитуриентам', d: 'Портфолио для поступления и занятия для души; детей берём по записи с 12 лет — усидчивых ребят.', span: 'lg:col-span-6', c: 's-sun', rot: '-1.5deg' }
 ]
@@ -46,9 +46,6 @@ const courses = [
   { emoji: '🕯️', t: 'Голландская живопись', note: 'Тёплый свет, натюрморт и глубокие тени.' },
   { emoji: '🌻', t: 'Постимпрессионизм', note: 'Цвет, мазок и настроение по следам великих.' },
   { emoji: '💻', t: 'Цифровое искусство', note: 'Планшет и слои.' },
-  { emoji: '🖌️', t: 'Акрил', note: 'Плотный мазок и декор.' },
-  { emoji: '🖍️', t: 'Масляная пастель', note: 'Насыщенный цвет без кисти.' },
-  { emoji: '🌸', t: 'Сухая пастель', note: 'Пудровая растушёвка.' },
   { emoji: '🧑', t: 'Основы портрета', note: 'Пропорции, построение и характер лица.' },
   { emoji: '🎭', t: 'Портрет маслом', note: 'Объём, кожа и живой взгляд кистью.' },
   { emoji: '👗', t: 'Fashion-иллюстрация', note: 'Силуэт, поза и стиль в рисунке.' },
@@ -74,14 +71,14 @@ const reviews = [
 ]
 
 const socials = [
-  { label: 'Telegram', handle: '@shkola_risovaniya_azart', href: tgHref, icon: 'i-simple-icons-telegram', c: 's-sky' },
+  { label: 'Telegram', handle: '@azart_ekb', href: tgHref, icon: 'i-simple-icons-telegram', c: 's-sky' },
   { label: 'ВКонтакте', handle: 'vk.ru/shkola_risovaniya_azart', href: vkHref, icon: 'i-simple-icons-vk', c: 's-lavender' },
   { label: 'MAX', handle: 'max.ru', href: null, icon: 'i-lucide-message-circle', c: 's-sun' },
-  { label: '2ГИС', handle: '★ 4.9 · 284 отзыва', href: 'https://2gis.ru/ekaterinburg/search/AZ.art', icon: 'i-lucide-map-pinned', c: 's-fuchsia' },
-  { label: 'Отзывы', handle: 'Яндекс · пл. 1905 года', href: null, icon: 'i-lucide-star', c: 's-lime' }
+  { label: '2ГИС', handle: '★ 4.9 · 284 отзыва', href: dgisHref, icon: 'i-lucide-map-pinned', c: 's-fuchsia' },
+  { label: 'Отзывы', handle: 'Яндекс · пл. 1905 года', href: yandexHref, icon: 'i-lucide-star', c: 's-lime' }
 ]
 
-const marquee = ['Рисуй без оглядки', 'AZ.art', 'Екатеринбург', 'проспект Ленина 49', '360 дней в году', 'с 10 до 21', 'масляная пастель', 'пленэры']
+const marquee = ['Рисуй без оглядки', 'AZ.art', 'Екатеринбург', 'проспект Ленина 49', '360 дней в году', 'с 10 до 21', 'живопись', 'пленэры']
 
 const faqs = [
   { q: 'Я совсем не умею рисовать. Мне к вам можно?', a: 'Конечно! Большинство взрослых приходит с чистого листа — и это абсолютно нормально. Мы начинаем с основ и идём в твоём темпе, без сравнений и оценок.' },
@@ -158,7 +155,7 @@ const toggleFaq = (i) => {
           </h1>
 
           <p
-            class="rise mt-7 max-w-xl text-lg font-semibold text-inksoft"
+            class="rise mt-7 max-w-xl text-xl font-extrabold text-inksoft sm:text-2xl"
             style="animation-delay: 0.24s"
           >
             AZ.art — творческое комьюнити, где каждый взрослый открывает в себе
@@ -208,11 +205,13 @@ const toggleFaq = (i) => {
             class="sheet marker-frame absolute top-4 -left-8 w-40 animate-float-b p-2 shadow-[5px_7px_0_var(--sticker-shadow)]"
             style="--rot: 6deg"
           >
-            <img
-              src="/pastel.jpg"
-              alt="Пастельный этюд: синие цветы на оранжевом фоне"
-              class="aspect-[4/5] w-full rounded-[3px] object-cover"
-            >
+            <div class="aspect-[4/5] w-full overflow-hidden rounded-[3px]">
+              <img
+                src="/pastel.jpg?v=2"
+                alt="Пастельный этюд: синие цветы на оранжевом фоне"
+                class="h-full w-full scale-[1.18] object-cover"
+              >
+            </div>
           </div>
           <span
             class="sticker-text absolute top-60 -right-8 max-w-[9rem] text-right text-4xl animate-float-d"
@@ -437,7 +436,7 @@ const toggleFaq = (i) => {
             class="sticker rd5 s-lime absolute -top-4 right-8 px-4 py-2 font-hand text-xl font-bold"
             style="--rot: 6deg"
           >{{ basics.badge }}</span>
-          <div class="grid gap-8 lg:grid-cols-[1fr_1.2fr] lg:items-center">
+          <div class="grid gap-8 lg:grid-cols-[1fr_1.2fr_auto] lg:items-center">
             <div>
               <p class="font-hand text-3xl text-fuchsia">
                 базовый курс
@@ -470,6 +469,18 @@ const toggleFaq = (i) => {
               >
                 {{ m }}
               </span>
+            </div>
+            <div class="hidden justify-self-center lg:block">
+              <div
+                class="sticker sheet marker-frame w-36 p-2 xl:w-44"
+                style="--rot: 4deg"
+              >
+                <img
+                  src="/azbuka-sticker.png?v=2"
+                  alt="Работа ученицы курса «Аzбука художника»"
+                  class="aspect-[3/4] w-full rounded-[3px] object-cover"
+                >
+              </div>
             </div>
           </div>
         </div>
@@ -693,14 +704,14 @@ const toggleFaq = (i) => {
           </div>
           <div class="mt-2 flex flex-col gap-1">
             <NuxtLink
-              to="https://yandex.ru"
+              :to="yandexHref"
               target="_blank"
               class="font-hand inline-block text-xl text-[#2a1a12]/70 underline decoration-wavy"
             >
               читать отзывы на Яндексе →
             </NuxtLink>
             <NuxtLink
-              to="https://2gis.ru/ekaterinburg/search/AZ.art"
+              :to="dgisHref"
               target="_blank"
               class="font-hand inline-block text-xl text-[#2a1a12]/70 underline decoration-wavy"
             >
@@ -949,6 +960,17 @@ const toggleFaq = (i) => {
                 />
                 Позвонить
               </NuxtLink>
+              <NuxtLink
+                :to="yandexHref"
+                target="_blank"
+                class="btn btn-card rd1"
+              >
+                <UIcon
+                  name="i-lucide-star"
+                  class="size-5 text-[#fc3f1d]"
+                />
+                Мы на Яндексе
+              </NuxtLink>
             </div>
           </div>
 
@@ -989,7 +1011,7 @@ const toggleFaq = (i) => {
                 class="size-6 text-fuchsia"
               />
               <p class="mt-2 font-hand text-xl text-inksoft">telegram</p>
-              <p class="font-display text-base font-bold leading-tight break-all">@shkola_risovaniya_azart</p>
+              <p class="font-display text-base font-bold leading-tight break-all">@azart_ekb</p>
             </NuxtLink>
             <div
               class="reveal sticker s-card min-w-0 p-6"
