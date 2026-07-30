@@ -66,6 +66,13 @@ const plans = [
   { tag: 'Премиум', emoji: '👑', d: 'Максимум погружения и внимания для быстрого результата.', perks: ['Приоритетное расписание', 'Все техники и пленэры', 'Персональные рекомендации', 'Закрытые события комьюнити'], c: 's-card', rot: '1.5deg', accent: false }
 ]
 
+const oneOffs = [
+  { n: '1', label: 'занятие', term: 'неделя на посещение', c: 's-sky', rd: 'rd1', rot: '-2deg' },
+  { n: '4', label: 'занятия', term: '1 месяц', c: 's-sun', rd: 'rd2', rot: '1.5deg' },
+  { n: '8', label: 'занятий', term: '1 месяц', c: 's-lime', rd: 'rd1', rot: '-1deg' },
+  { n: '∞', label: 'безлимит', term: '1 месяц · без ограничений по посещениям', c: 's-fuchsia', rd: 'rd2', rot: '2deg' }
+]
+
 const reviews = [
   { t: 'Это уютное место, в котором хочется творить. Я не рисовала с детства, но что-то стало получаться. Мне очень понравилась атмосфера и настроение, которое создавалось с каждым мазком кисти.', n: 'Наталья Ж., пробное занятие' },
   { t: 'В AZ.art я пришла по рекламному объявлению и… пропала на год. Это не просто школа — это место, куда хочется приходить, общаться, заниматься творчеством. Здесь прекрасно чувствуют себя и дети, и взрослые, здесь прекрасные преподаватели, увлечённые своим делом.', n: 'Ильсия Злоказова, живопись' },
@@ -770,6 +777,40 @@ const toggleFaq = (i) => {
             </div>
           </article>
         </div>
+
+        <div
+          class="reveal sticker s-card tape mt-12 p-6 sm:p-8"
+          style="--rot: 0.6deg"
+        >
+          <div class="flex flex-wrap items-end justify-between gap-3">
+            <h3 class="font-display text-2xl font-bold sm:text-3xl">
+              Разовые занятия
+            </h3>
+            <p class="font-hand text-2xl text-inksoft">
+              начни с одного — ритм выберешь потом 💛
+            </p>
+          </div>
+          <div class="mt-6 grid grid-cols-2 gap-5 lg:grid-cols-4">
+            <div
+              v-for="r in oneOffs"
+              :key="r.n"
+              class="sticker group p-5 text-center"
+              :class="[r.c, r.rd]"
+              :style="`--rot: ${r.rot}`"
+            >
+              <span class="puffy block text-5xl group-hover-wiggle">{{ r.n }}</span>
+              <p class="mt-1 font-display text-sm font-bold tracking-wide uppercase">
+                {{ r.label }}
+              </p>
+              <p class="mt-2 font-hand text-xl leading-tight opacity-80">
+                {{ r.term }}
+              </p>
+            </div>
+          </div>
+          <p class="mt-5 text-center font-hand text-2xl text-fuchsia">
+            стоимость — по запросу, обсудим на пробном
+          </p>
+        </div>
       </div>
     </section>
 
@@ -780,10 +821,10 @@ const toggleFaq = (i) => {
       <AzTear color="paper2" />
 
       <div class="relative mx-auto grid max-w-6xl gap-8 px-4 lg:grid-cols-2">
-          <div
-            class="reveal watercolor-paper rd-paper tape tape-wide relative p-8 sm:p-10"
-            style="--rot: -1deg"
-          >
+        <div
+          class="reveal watercolor-paper rd-paper tape tape-wide relative p-8 sm:p-10"
+          style="--rot: -1deg"
+        >
           <p class="font-hand text-3xl text-[#c2357f]">
             впечатления после пробного
           </p>

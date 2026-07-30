@@ -129,7 +129,6 @@ const menuOpen = ref(false)
     </main>
 
     <footer class="relative bg-ink text-paper">
-
       <div class="mx-auto max-w-6xl px-4 py-14">
         <div class="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div class="max-w-sm">

@@ -334,7 +334,7 @@ body::before {
   line-height: 0.9;
   letter-spacing: 0.01em;
   transform: rotate(-2.5deg);
-  -webkit-text-stroke: 2.5px currentColor;
+  -webkit-text-stroke: 4px currentColor;
   paint-order: stroke fill;
   text-shadow:
     2px 3px 0 rgba(255, 255, 255, 0.45),
