@@ -1013,6 +1013,19 @@ const toggleFaq = (i) => {
               <p class="mt-2 font-hand text-xl text-inksoft">telegram</p>
               <p class="font-display text-base font-bold leading-tight break-all">@azart_ekb</p>
             </NuxtLink>
+            <NuxtLink
+              :to="vkHref"
+              target="_blank"
+              class="reveal sticker s-card min-w-0 p-6"
+              style="--rot: -2deg"
+            >
+              <UIcon
+                name="i-simple-icons-vk"
+                class="size-6 text-fuchsia"
+              />
+              <p class="mt-2 font-hand text-xl text-inksoft">вконтакте</p>
+              <p class="font-display text-base font-bold leading-tight break-all">vk.ru/shkola_risovaniya_azart</p>
+            </NuxtLink>
             <div
               class="reveal sticker s-card min-w-0 p-6"
               style="--rot: -1deg"

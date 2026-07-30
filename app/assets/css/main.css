@@ -328,6 +328,8 @@ body::before {
   line-height: 0.9;
   letter-spacing: 0.01em;
   transform: rotate(-2.5deg);
+  -webkit-text-stroke: 2.5px currentColor;
+  paint-order: stroke fill;
   text-shadow:
     2px 3px 0 rgba(255, 255, 255, 0.45),
     1px 1px 0 rgba(42, 26, 18, 0.18);
