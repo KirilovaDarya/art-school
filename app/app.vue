@@ -25,6 +25,7 @@ useSeoMeta({
 
 const nav = [
   { label: 'направления', to: '#directions' },
+  { label: 'расписание', to: '#schedule' },
   { label: 'курсы', to: '#courses' },
   { label: 'пробное', to: '#trial' },
   { label: 'абонементы', to: '#plans' },
@@ -48,11 +49,11 @@ const menuOpen = ref(false)
           <img
             src="/logo.jpg"
             alt="AZ.art"
-            class="block h-9 w-auto object-cover aspect-[2.3/1] mix-blend-multiply"
+            class="block h-12 w-auto object-cover aspect-[2.3/1] mix-blend-multiply"
           >
         </NuxtLink>
 
-        <nav class="hidden items-center gap-5 md:flex">
+        <nav class="hidden items-center gap-5 lg:flex">
           <NuxtLink
             v-for="(item, i) in nav"
             :key="item.to"
@@ -67,7 +68,7 @@ const menuOpen = ref(false)
         <div class="relative flex items-center gap-2">
           <button
             type="button"
-            class="sticker rd5 s-card flex size-10 items-center justify-center md:hidden"
+            class="sticker rd5 s-card flex size-10 items-center justify-center lg:hidden"
             :aria-label="menuOpen ? 'Закрыть меню' : 'Открыть меню'"
             :aria-expanded="menuOpen"
             @click="menuOpen = !menuOpen"
@@ -93,7 +94,7 @@ const menuOpen = ref(false)
 
           <div
             v-if="menuOpen"
-            class="rise sticker s-card rd2 absolute right-0 top-full z-50 mt-3 w-60 p-3 md:hidden"
+            class="rise sticker s-card rd2 absolute right-0 top-full z-50 mt-3 w-60 p-3 lg:hidden"
             style="--rot: 1deg"
           >
             <NuxtLink
@@ -128,7 +129,6 @@ const menuOpen = ref(false)
     </main>
 
     <footer class="relative bg-ink text-paper">
-      <AzTear color="paper2" />
 
       <div class="mx-auto max-w-6xl px-4 py-14">
         <div class="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
@@ -140,7 +140,7 @@ const menuOpen = ref(false)
               <img
                 src="/logo.jpg"
                 alt="AZ.art"
-                class="block h-8 w-auto object-cover aspect-[2.3/1] mix-blend-multiply"
+                class="block h-11 w-auto object-cover aspect-[2.3/1] mix-blend-multiply"
               >
             </span>
             <p class="mt-4 font-hand text-2xl text-paper/80">

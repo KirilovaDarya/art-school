@@ -4,6 +4,8 @@ const phoneHref = 'tel:+79935142815'
 const tgHref = 'https://t.me/azart_ekb'
 const vkHref = 'https://vk.ru/shkola_risovaniya_azart'
 const mapHref = 'https://clck.ru/3USsL9'
+const schedule = { dates: '27 июля — 2 августа', ver: 'd103dd4e' }
+const scheduleHref = `/raspisanie.pdf?ver=${schedule.ver}`
 const yandexHref = 'https://yandex.ru/maps/org/azart/56240254129/reviews/?add-review=true'
 const dgisHref = 'https://2gis.ru/ekaterinburg/search/azart/firm/70000001089436167/60.614748%2C56.839963/tab/reviews'
 const address = 'проспект Ленина 49, Екатеринбург'
@@ -65,9 +67,9 @@ const plans = [
 ]
 
 const reviews = [
-  { t: 'Пришла на пробное «просто посмотреть» — и осталась на год. Здесь правда слышат и не сравнивают.', n: 'Анна, живопись' },
-  { t: 'Готовила портфолио и впервые поняла: рисунок — это не талант, а разбор. Поступила туда, куда хотела.', n: 'Полина, абитуриентка' },
-  { t: 'Хожу после работы как на терапию: растения, чай, свои люди и ни одной оценки за целый день.', n: 'Марина, пастель' }
+  { t: 'Это уютное место, в котором хочется творить. Я не рисовала с детства, но что-то стало получаться. Мне очень понравилась атмосфера и настроение, которое создавалось с каждым мазком кисти.', n: 'Наталья Ж., пробное занятие' },
+  { t: 'В AZ.art я пришла по рекламному объявлению и… пропала на год. Это не просто школа — это место, куда хочется приходить, общаться, заниматься творчеством. Здесь прекрасно чувствуют себя и дети, и взрослые, здесь прекрасные преподаватели, увлечённые своим делом.', n: 'Ильсия Злоказова, живопись' },
+  { t: 'Преподаватели очень внимательные — к каждому находят свой подход, всё подробно объясняют и мотивируют продолжать, даже когда что-то не получается. В школе уютно: много света, музыка, все материалы выдают на месте.', n: 'Дарья Эд, курс 9 месяцев' }
 ]
 
 const socials = [
@@ -412,7 +414,110 @@ const toggleFaq = (i) => {
       </div>
     </section>
 
+    <section
+      id="schedule"
+      class="relative overflow-hidden bg-paper2 py-24 sm:py-28"
+    >
+      <AzTear color="paper" />
+
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute top-14 right-6 z-0 hidden text-6xl animate-float lg:block"
+        style="--rot: 8deg"
+      >
+        🗓️
+      </div>
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute bottom-10 -left-4 z-0 hidden text-5xl animate-float-d xl:block"
+        style="--rot: -10deg"
+      >
+        ✏️
+      </div>
+
+      <div class="relative mx-auto max-w-6xl px-4">
+        <div class="mb-10 flex flex-wrap items-end justify-between gap-6">
+          <div>
+            <p class="font-hand text-3xl text-fuchsia">
+              темы занятий на неделю
+            </p>
+            <h2 class="mt-1 puffy text-5xl sm:text-7xl">
+              Расписание
+            </h2>
+            <p class="mt-4 max-w-md text-lg font-semibold text-inksoft">
+              Что рисуем на этой неделе в «Доме печати» — проспект Ленина 49.
+              Запись заранее — мест в мастерской немного.
+            </p>
+          </div>
+          <span
+            class="sticker rd5 s-sun px-6 py-4 text-center font-hand text-2xl leading-tight font-bold whitespace-nowrap"
+            style="--rot: -4deg"
+          >
+            {{ schedule.dates }}
+          </span>
+        </div>
+
+        <details
+          open
+          class="reveal sticker s-card tape group p-4 sm:p-6"
+          style="--rot: -0.4deg"
+        >
+          <summary class="flex cursor-pointer items-center justify-between gap-4 px-2 py-1 select-none [&::-webkit-details-marker]:hidden">
+            <span class="flex items-center gap-3 font-display text-lg font-bold sm:text-2xl">
+              <span class="text-3xl group-hover-wiggle">📄</span>
+              Темы занятий · Дом печати · {{ schedule.dates }}
+            </span>
+            <span class="flex shrink-0 items-center gap-2 font-hand text-2xl text-fuchsia">
+              <span class="group-open:hidden">показать</span>
+              <span class="hidden group-open:inline">скрыть</span>
+              <UIcon
+                name="i-lucide-chevron-down"
+                class="size-6 transition-transform duration-300 group-open:rotate-180"
+              />
+            </span>
+          </summary>
+          <div class="mt-4 overflow-hidden rounded-[8px] border-2 border-ink/10">
+            <iframe
+              :src="scheduleHref"
+              title="Расписание тем занятий — Дом печати"
+              class="h-[70vh] min-h-[24rem] w-full bg-paper"
+              loading="lazy"
+            />
+          </div>
+        </details>
+
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <a
+            :href="scheduleHref"
+            download
+            class="btn btn-fuchsia rd1"
+          >
+            <UIcon
+              name="i-lucide-download"
+              class="size-5"
+            />
+            Скачать PDF
+          </a>
+          <a
+            :href="scheduleHref"
+            target="_blank"
+            class="btn btn-ink rd2"
+          >
+            <UIcon
+              name="i-lucide-external-link"
+              class="size-5"
+            />
+            Открыть в новой вкладке
+          </a>
+          <span class="font-hand text-2xl text-inksoft">
+            запись — в Telegram или по телефону ↓
+          </span>
+        </div>
+      </div>
+    </section>
+
     <div class="relative bg-paper py-14 text-center">
+      <AzTear color="paper2" />
       <p class="font-hand text-2xl text-inksoft">
         листай дальше ↓
       </p>
@@ -675,10 +780,10 @@ const toggleFaq = (i) => {
       <AzTear color="paper2" />
 
       <div class="relative mx-auto grid max-w-6xl gap-8 px-4 lg:grid-cols-2">
-        <div
-          class="reveal watercolor-paper rd-paper tape relative p-8 sm:p-10"
-          style="--rot: -1deg"
-        >
+          <div
+            class="reveal watercolor-paper rd-paper tape tape-wide relative p-8 sm:p-10"
+            style="--rot: -1deg"
+          >
           <p class="font-hand text-3xl text-[#c2357f]">
             впечатления после пробного
           </p>
@@ -697,7 +802,7 @@ const toggleFaq = (i) => {
             </li>
           </ul>
           <div class="mt-6 flex items-center gap-3">
-            <span class="puffy text-5xl">5.0</span>
+            <span class="puffy text-5xl">4.9</span>
             <div class="text-[#e0a23a]">
               ★★★★★
             </div>
@@ -720,34 +825,42 @@ const toggleFaq = (i) => {
           </div>
         </div>
 
-        <div class="relative min-h-[22rem]">
+        <div class="relative min-h-[24rem]">
           <div
-            class="polaroid rd4 absolute top-0 left-4 w-52"
+            class="polaroid rd4 tape absolute top-0 left-4 w-72"
             style="transform: rotate(-5deg)"
           >
-            <div class="flex aspect-square items-center justify-center rounded-2xl bg-lavender text-7xl">
-              🖌️
-            </div>
-            <p class="mt-2 text-center font-hand text-2xl text-ink">
-              моя первая работа
-            </p>
+            <img
+              src="/first-work.jpg"
+              alt="Моя первая работа"
+              class="aspect-square w-full rounded-2xl object-cover"
+            >
           </div>
           <div
-            class="polaroid rd4 absolute top-12 right-2 w-48 tape"
+            class="polaroid rd4 tape absolute top-12 right-2 w-48"
             style="transform: rotate(7deg)"
           >
-            <div class="flex aspect-square items-center justify-center rounded-2xl bg-sun text-7xl">
-              🎨
-            </div>
-            <p class="mt-2 text-center font-hand text-2xl text-ink">
-              акварельный вечер
-            </p>
+            <img
+              src="/watercolor-evening.jpg"
+              alt="Акварельный вечер"
+              class="aspect-square w-full rounded-2xl object-cover"
+            >
+          </div>
+          <div
+            class="polaroid rd4 tape absolute bottom-0 left-32 w-52"
+            style="transform: rotate(4deg)"
+          >
+            <img
+              src="/review-photo.jpg"
+              alt="Работа ученицы AZ.art"
+              class="aspect-square w-full rounded-2xl object-cover"
+            >
           </div>
           <span
-            class="sticker rd5 s-fuchsia absolute right-6 bottom-6 flex size-24 flex-col items-center justify-center text-center font-display text-sm font-bold leading-tight animate-float"
+            class="sticker rd5 s-fuchsia absolute right-4 bottom-10 flex size-24 flex-col items-center justify-center text-center font-display text-sm font-bold leading-tight animate-float"
             style="--rot: -10deg"
           >
-            рейтинг<br>5.0
+            рейтинг<br>4.9
           </span>
         </div>
       </div>
@@ -971,6 +1084,17 @@ const toggleFaq = (i) => {
                 />
                 Мы на Яндексе
               </NuxtLink>
+              <NuxtLink
+                :to="dgisHref"
+                target="_blank"
+                class="btn btn-card rd2"
+              >
+                <UIcon
+                  name="i-lucide-map-pinned"
+                  class="size-5 text-[#2fa944]"
+                />
+                Мы на 2ГИС
+              </NuxtLink>
             </div>
           </div>
 
@@ -1026,7 +1150,9 @@ const toggleFaq = (i) => {
               <p class="mt-2 font-hand text-xl text-inksoft">вконтакте</p>
               <p class="font-display text-base font-bold leading-tight break-all">vk.ru/shkola_risovaniya_azart</p>
             </NuxtLink>
-            <div
+            <NuxtLink
+              :to="tgHref"
+              target="_blank"
               class="reveal sticker s-card min-w-0 p-6"
               style="--rot: -1deg"
             >
@@ -1040,17 +1166,19 @@ const toggleFaq = (i) => {
               <p class="font-display text-base font-bold">
                 {{ hours }}
               </p>
-            </div>
+            </NuxtLink>
           </div>
         </div>
 
-        <div class="mt-12 flex flex-wrap gap-4">
+        <div class="mt-12 flex flex-wrap justify-center gap-4">
           <component
-            :is="s.href ? 'NuxtLink' : 'div'"
+            :is="s.href ? 'NuxtLink' : 'button'"
             v-for="s in socials"
             :key="s.label"
             :to="s.href"
             :target="s.href ? '_blank' : undefined"
+            :type="s.href ? undefined : 'button'"
+            :title="s.href ? undefined : 'Скоро добавим'"
             class="reveal sticker flex items-center gap-3 px-5 py-3"
             :class="[s.c, 'rd1']"
           >
