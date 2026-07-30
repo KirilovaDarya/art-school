@@ -634,7 +634,7 @@ onMounted(() => {
           style="--rot: -0.5deg"
         >
           <span
-            class="sticker rd5 s-lime absolute -top-4 right-8 z-10 px-4 py-2 font-hand text-xl font-bold"
+            class="sticker rd5 s-lime absolute -top-4 right-4 z-10 px-4 py-2 font-hand text-xl font-bold"
             style="--rot: 6deg"
           >{{ basics.badge }}</span>
           <div class="grid gap-8 lg:grid-cols-[1fr_1.2fr_auto] lg:items-center">

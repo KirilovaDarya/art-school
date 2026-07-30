@@ -5,7 +5,7 @@ useHead({
   ],
   link: [
     { rel: 'icon', href: '/favicon.svg' },
-    { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;800&family=Nunito:wght@400;600;700;800&family=Caveat:wght@500;700&display=swap' }
+    { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700;800&family=Nunito:wght@400;600;700;800&family=Caveat:wght@500;700&display=swap' }
   ],
   htmlAttrs: {
     lang: 'ru'

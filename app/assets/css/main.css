@@ -118,12 +118,12 @@ body::before {
 .outline-text {
   color: transparent;
   letter-spacing: 0.01em;
-  font-weight: 400;
+  font-weight: 600;
   text-shadow:
-    -0.015em 0 0 var(--sketch), 0.015em 0 0 var(--sketch),
-    0 -0.015em 0 var(--sketch), 0 0.015em 0 var(--sketch),
-    -0.008em -0.008em 0 var(--sketch), 0.008em -0.008em 0 var(--sketch),
-    -0.008em 0.008em 0 var(--sketch), 0.008em 0.008em 0 var(--sketch);
+    -0.02em 0 0 var(--sketch), 0.02em 0 0 var(--sketch),
+    0 -0.02em 0 var(--sketch), 0 0.02em 0 var(--sketch),
+    -0.01em -0.01em 0 var(--sketch), 0.01em -0.01em 0 var(--sketch),
+    -0.01em 0.01em 0 var(--sketch), 0.01em 0.01em 0 var(--sketch);
 }
 
 @media (max-width: 639px) {
