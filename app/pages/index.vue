@@ -4,8 +4,9 @@ const phoneHref = 'tel:+79935142815'
 const tgHref = 'https://t.me/azart_ekb'
 const vkHref = 'https://vk.ru/shkola_risovaniya_azart'
 const mapHref = 'https://clck.ru/3USsL9'
+const { app } = useRuntimeConfig()
 const schedule = { dates: '27 июля — 2 августа', ver: 'd103dd4e' }
-const scheduleHref = `/raspisanie.pdf?ver=${schedule.ver}`
+const scheduleHref = `${app.baseURL}raspisanie.pdf?ver=${schedule.ver}`
 const yandexHref = 'https://yandex.ru/maps/org/azart/56240254129/reviews/?add-review=true'
 const dgisHref = 'https://2gis.ru/ekaterinburg/search/azart/firm/70000001089436167/60.614748%2C56.839963/tab/reviews'
 const address = 'проспект Ленина 49, Екатеринбург'
