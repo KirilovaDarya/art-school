@@ -42,13 +42,13 @@ const menuOpen = ref(false)
         <NuxtLink
           to="/"
           aria-label="AZ.art — школа рисования, на главную"
-          class="sticker inline-block overflow-hidden rounded-2xl bg-white p-1"
+          class="sticker sheet inline-block overflow-hidden p-1.5"
           style="--rot: -2deg"
         >
           <img
             src="/logo.jpg"
             alt="AZ.art"
-            class="block h-9 w-auto object-cover aspect-[2.3/1]"
+            class="block h-9 w-auto object-cover aspect-[2.3/1] mix-blend-multiply"
           >
         </NuxtLink>
 
@@ -134,13 +134,13 @@ const menuOpen = ref(false)
         <div class="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div class="max-w-sm">
             <span
-              class="sticker inline-block overflow-hidden rounded-2xl bg-white p-1"
+              class="sticker sheet inline-block overflow-hidden p-1.5"
               style="--rot: -2deg"
             >
               <img
                 src="/logo.jpg"
                 alt="AZ.art"
-                class="block h-8 w-auto object-cover aspect-[2.3/1]"
+                class="block h-8 w-auto object-cover aspect-[2.3/1] mix-blend-multiply"
               >
             </span>
             <p class="mt-4 font-hand text-2xl text-paper/80">

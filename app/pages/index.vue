@@ -130,7 +130,7 @@ const toggleFaq = (i) => {
       </filter>
     </svg>
 
-    <section class="relative overflow-hidden bg-paper">
+    <section class="paper-tex relative overflow-hidden bg-paper">
       <div class="relative z-10 mx-auto grid max-w-6xl items-center gap-12 px-4 pt-16 pb-24 sm:pt-24 lg:grid-cols-12">
         <div class="lg:col-span-7">
           <span
@@ -198,51 +198,36 @@ const toggleFaq = (i) => {
           class="relative hidden h-[30rem] lg:col-span-5 lg:block"
           aria-hidden="true"
         >
+          <img
+            src="/chair-sticker.png?v=2"
+            alt=""
+            class="sticker-shadow pointer-events-none absolute -right-4 bottom-0 h-[28rem] w-auto select-none"
+            style="--rot: 3deg"
+          >
           <div
-            class="sheet marker-frame absolute top-4 left-2 w-40 p-2 shadow-[5px_7px_0_var(--sticker-shadow)]"
-            style="transform: rotate(6deg)"
+            class="sheet marker-frame absolute top-4 -left-8 w-40 animate-float-b p-2 shadow-[5px_7px_0_var(--sticker-shadow)]"
+            style="--rot: 6deg"
           >
             <img
               src="/pastel.jpg"
               alt="Пастельный этюд: синие цветы на оранжевом фоне"
               class="aspect-[4/5] w-full rounded-[3px] object-cover"
             >
-            <p class="mt-1 text-center font-hand text-3xl text-sketch underline decoration-wavy decoration-2 underline-offset-4">
-              пастель
-            </p>
           </div>
           <span
-            class="sticker rd2 s-sun absolute top-28 right-0 max-w-[10rem] px-4 py-3 text-center font-display text-sm leading-tight font-bold animate-float"
-            style="--rot: -6deg"
+            class="sticker-text absolute top-60 -right-8 max-w-[9rem] text-right text-4xl animate-float-d"
+            style="--rot: -7deg"
           >здесь не ставят оценок ✨</span>
           <div
-            class="sheet marker-frame absolute bottom-0 left-24 w-44 p-2 shadow-[5px_7px_0_var(--sticker-shadow)]"
-            style="transform: rotate(4deg)"
+            class="sheet marker-frame absolute bottom-0 left-2 w-44 animate-float-c p-2 shadow-[5px_7px_0_var(--sticker-shadow)]"
+            style="--rot: 4deg"
           >
             <img
               src="/plein-air.jpg"
               alt="Набросок садовых ворот в зелени — пленэр"
               class="aspect-square w-full rounded-[3px] object-cover"
             >
-            <p class="mt-1 text-center font-hand text-3xl text-sketch underline decoration-wavy decoration-2 underline-offset-4">
-              пленэр
-            </p>
           </div>
-
-          <span
-            class="sticker rd5 s-ink absolute -top-2 right-10 flex size-24 flex-col items-center justify-center text-center font-display text-xs font-bold leading-tight animate-float"
-            style="--rot: 12deg"
-          >
-            360<br>дней<br>в году
-          </span>
-          <span
-            class="absolute right-0 bottom-0 font-hand text-3xl text-fuchsia"
-            style="transform: rotate(-8deg)"
-          >с нуля — ок!</span>
-          <span
-            class="sticker rd5 s-card absolute -bottom-3 left-0 flex size-12 items-center justify-center text-2xl animate-float"
-            style="--rot: -10deg"
-          >🪴</span>
         </div>
       </div>
     </section>
@@ -323,25 +308,49 @@ const toggleFaq = (i) => {
           class="sticker s-card rd2 tape p-2"
           style="--rot: 5deg"
         >
-          <AzSketch
-            name="busts"
-            class="w-36 text-ink"
-          />
+          <img
+            src="/blue-face.jpg"
+            alt=""
+            class="block aspect-[3/4] w-72 rounded-[3px] object-cover"
+          >
         </div>
+      </div>
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute top-20 -left-8 z-0 hidden xl:block"
+      >
+        <img
+          src="/sunflower-sticker.png"
+          alt=""
+          class="sticker-shadow h-44 w-auto animate-float select-none"
+          style="--rot: -8deg"
+        >
       </div>
       <div
         aria-hidden="true"
         class="pointer-events-none absolute bottom-12 -left-2 z-0 hidden xl:block"
       >
         <div
-          class="sticker s-card rd1 p-2"
+          class="sticker s-card rd1 tape p-2"
           style="--rot: -4deg"
         >
-          <AzSketch
-            name="columns"
-            class="w-32"
-          />
+          <img
+            src="/directions-art.png"
+            alt=""
+            class="block aspect-[3/4] w-64 rounded-[3px] object-cover"
+          >
         </div>
+      </div>
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute right-0 bottom-6 z-0 hidden xl:block"
+      >
+        <img
+          src="/lamp-sticker.png"
+          alt=""
+          class="sticker-shadow h-80 w-auto animate-float select-none"
+          style="--rot: -4deg"
+        >
       </div>
 
       <div class="relative mx-auto max-w-6xl px-4">
@@ -418,21 +427,6 @@ const toggleFaq = (i) => {
       class="relative bg-paper2 py-24 sm:py-28"
     >
       <AzTear color="paper" />
-
-      <div
-        aria-hidden="true"
-        class="pointer-events-none absolute top-28 right-4 z-0 hidden lg:block"
-      >
-        <div
-          class="sticker s-card rd1 p-2"
-          style="--rot: -5deg"
-        >
-          <AzSketch
-            name="portrait"
-            class="w-24 text-sketch"
-          />
-        </div>
-      </div>
 
       <div class="relative mx-auto max-w-6xl px-4">
         <div
@@ -580,16 +574,17 @@ const toggleFaq = (i) => {
 
       <div
         aria-hidden="true"
-        class="pointer-events-none absolute top-24 right-3 z-0 hidden lg:block"
+        class="pointer-events-none absolute bottom-10 -left-4 z-0 hidden xl:block"
       >
         <div
-          class="sticker s-card rd2 tape p-2 animate-float"
-          style="--rot: 6deg"
+          class="sticker s-card rd1 tape p-2"
+          style="--rot: -5deg"
         >
-          <AzSketch
-            name="bouquet"
-            class="w-28 text-sketch"
-          />
+          <img
+            src="/directions-art.png"
+            alt=""
+            class="block aspect-[3/4] w-40 rounded-[3px] object-cover"
+          >
         </div>
       </div>
 
@@ -736,18 +731,6 @@ const toggleFaq = (i) => {
             <p class="mt-2 text-center font-hand text-2xl text-ink">
               акварельный вечер
             </p>
-          </div>
-          <div
-            aria-hidden="true"
-            class="absolute bottom-0 left-2 w-32"
-            style="transform: rotate(-4deg)"
-          >
-            <div class="sticker s-card rd1 p-2">
-              <AzSketch
-                name="portrait"
-                class="w-full text-sketch"
-              />
-            </div>
           </div>
           <span
             class="sticker rd5 s-fuchsia absolute right-6 bottom-6 flex size-24 flex-col items-center justify-center text-center font-display text-sm font-bold leading-tight animate-float"
