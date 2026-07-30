@@ -5,7 +5,7 @@ useHead({
   ],
   link: [
     { rel: 'icon', href: '/favicon.svg' },
-    { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700;800&family=Nunito:wght@400;600;700;800&family=Caveat:wght@500;700&display=swap' }
+    { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;800&family=Nunito:wght@400;600;700;800&family=Caveat:wght@500;700&display=swap' }
   ],
   htmlAttrs: {
     lang: 'ru'
@@ -144,13 +144,13 @@ const colorMode = useColorMode()
         <div class="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div class="max-w-sm">
             <span
-              class="inline-block"
-              style="transform: rotate(-2deg)"
+              class="sticker sheet inline-block overflow-hidden p-1.5"
+              style="--rot: -2deg"
             >
               <img
                 src="/logo.jpg"
                 alt="AZ.art"
-                class="block h-11 w-auto object-cover aspect-[2.3/1] grayscale invert mix-blend-screen"
+                class="block h-11 w-auto object-cover aspect-[2.3/1] mix-blend-multiply"
               >
             </span>
             <p class="mt-4 font-hand text-2xl text-paper/80">

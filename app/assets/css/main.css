@@ -118,20 +118,15 @@ body::before {
 .outline-text {
   color: transparent;
   letter-spacing: 0.01em;
+  font-weight: 400;
   text-shadow:
-    -0.03em 0 0 var(--sketch), 0.03em 0 0 var(--sketch),
-    0 -0.03em 0 var(--sketch), 0 0.03em 0 var(--sketch),
-    -0.015em -0.015em 0 var(--sketch), 0.015em -0.015em 0 var(--sketch),
-    -0.015em 0.015em 0 var(--sketch), 0.015em 0.015em 0 var(--sketch);
+    -0.015em 0 0 var(--sketch), 0.015em 0 0 var(--sketch),
+    0 -0.015em 0 var(--sketch), 0 0.015em 0 var(--sketch),
+    -0.008em -0.008em 0 var(--sketch), 0.008em -0.008em 0 var(--sketch),
+    -0.008em 0.008em 0 var(--sketch), 0.008em 0.008em 0 var(--sketch);
 }
 
 @media (max-width: 639px) {
-  .outline-text {
-    font-weight: 600;
-    text-shadow:
-      -0.02em 0 0 var(--sketch), 0.02em 0 0 var(--sketch),
-      0 -0.02em 0 var(--sketch), 0 0.02em 0 var(--sketch);
-  }
   .chalk-hand {
     line-height: 1.15;
   }

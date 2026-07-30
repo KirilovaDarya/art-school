@@ -229,19 +229,10 @@ onMounted(() => {
             Рисуй
           </h1>
           <h1
-            class="rise chalk-hand relative mt-2 inline-block text-fuchsia text-7xl lg:text-8xl"
+            class="rise chalk-hand mt-2 inline-block text-fuchsia text-7xl lg:text-8xl"
             style="animation-delay: 0.16s"
           >
             без оглядки!
-            <span
-              class="sheet marker-frame absolute top-1/2 right-0 block w-20 -translate-y-1/2 -rotate-6 p-1.5 shadow-[5px_7px_0_var(--sticker-shadow)] sm:w-32 lg:hidden"
-            >
-              <img
-                src="/pastel.jpg?v=2"
-                alt="Пастельный этюд: синие цветы на оранжевом фоне"
-                class="aspect-[4/5] w-full rounded-[3px] object-cover"
-              >
-            </span>
           </h1>
 
           <p
@@ -643,8 +634,8 @@ onMounted(() => {
           style="--rot: -0.5deg"
         >
           <span
-            class="pastel-badge absolute -top-5 right-0 z-10 px-5 py-2.5 font-hand text-xl font-bold sm:right-2"
-            style="--rot: 4deg"
+            class="sticker rd5 s-lime absolute -top-4 right-8 z-10 px-4 py-2 font-hand text-xl font-bold"
+            style="--rot: 6deg"
           >{{ basics.badge }}</span>
           <div class="grid gap-8 lg:grid-cols-[1fr_1.2fr_auto] lg:items-center">
             <div>
