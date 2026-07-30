@@ -223,13 +223,13 @@ onMounted(() => {
           </span>
 
           <h1
-            class="rise mt-7 puffy text-7xl sm:text-8xl"
+            class="rise mt-7 puffy text-7xl sm:text-8xl xl:text-9xl"
             style="animation-delay: 0.08s"
           >
             Рисуй
           </h1>
           <h1
-            class="rise chalk-hand mt-2 text-fuchsia text-7xl lg:text-8xl"
+            class="rise chalk-hand mt-2 text-fuchsia text-7xl lg:text-8xl xl:text-9xl"
             style="animation-delay: 0.16s"
           >
             без оглядки!
