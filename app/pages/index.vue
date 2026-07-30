@@ -234,8 +234,7 @@ onMounted(() => {
           >
             без оглядки!
             <span
-              class="sheet marker-frame absolute -right-2 -bottom-10 block w-28 p-1.5 shadow-[5px_7px_0_var(--sticker-shadow)] sm:-right-4 sm:w-32 lg:hidden"
-              style="--rot: -6deg"
+              class="sheet marker-frame absolute top-1/2 right-0 block w-20 -translate-y-1/2 -rotate-6 p-1.5 shadow-[5px_7px_0_var(--sticker-shadow)] sm:w-32 lg:hidden"
             >
               <img
                 src="/pastel.jpg?v=2"
@@ -644,8 +643,8 @@ onMounted(() => {
           style="--rot: -0.5deg"
         >
           <span
-            class="pastel-badge absolute -top-5 right-2 z-10 px-5 py-2.5 font-hand text-xl font-bold sm:right-6"
-            style="--rot: 7deg"
+            class="pastel-badge absolute -top-5 right-0 z-10 px-5 py-2.5 font-hand text-xl font-bold sm:right-2"
+            style="--rot: 4deg"
           >{{ basics.badge }}</span>
           <div class="grid gap-8 lg:grid-cols-[1fr_1.2fr_auto] lg:items-center">
             <div>

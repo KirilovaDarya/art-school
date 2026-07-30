@@ -44,13 +44,13 @@ const colorMode = useColorMode()
         <NuxtLink
           to="/"
           aria-label="AZ.art — школа рисования, на главную"
-          class="sticker sheet inline-block overflow-hidden p-1.5"
+          class="sticker sheet inline-block overflow-hidden p-1 sm:p-1.5"
           style="--rot: -2deg"
         >
           <img
             src="/logo.jpg"
             alt="AZ.art"
-            class="block h-12 w-auto object-cover aspect-[2.3/1] mix-blend-multiply"
+            class="block h-16 w-auto object-cover aspect-[2.3/1] mix-blend-multiply sm:h-12"
           >
         </NuxtLink>
 
@@ -144,13 +144,13 @@ const colorMode = useColorMode()
         <div class="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div class="max-w-sm">
             <span
-              class="sticker sheet inline-block overflow-hidden p-1.5"
-              style="--rot: -2deg"
+              class="inline-block"
+              style="transform: rotate(-2deg)"
             >
               <img
                 src="/logo.jpg"
                 alt="AZ.art"
-                class="block h-11 w-auto object-cover aspect-[2.3/1] mix-blend-multiply"
+                class="block h-11 w-auto object-cover aspect-[2.3/1] grayscale invert mix-blend-screen"
               >
             </span>
             <p class="mt-4 font-hand text-2xl text-paper/80">
